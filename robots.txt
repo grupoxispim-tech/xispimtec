@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+
+# Assets
+Allow: /imagens/
+Allow: /manifest.json
+Allow: /sitemap.xml
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Disallow crawling of specific paths if needed
+# Disallow: /admin/
+# Disallow: /private/
+
+# Sitemap
+Sitemap: https://xispimtec.com.br/sitemap.xml
