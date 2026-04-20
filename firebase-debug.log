@@ -1,0 +1,28 @@
+[debug] [2026-04-09T14:38:09.853Z] ----------------------------------------------------------------------
+[debug] [2026-04-09T14:38:09.858Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\HOME\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js projects:create olicar-car-2026 --display-name Olicar Car
+[debug] [2026-04-09T14:38:09.858Z] CLI Version:   15.13.0
+[debug] [2026-04-09T14:38:09.859Z] Platform:      win32
+[debug] [2026-04-09T14:38:09.859Z] Node Version:  v24.14.1
+[debug] [2026-04-09T14:38:09.859Z] Time:          Thu Apr 09 2026 11:38:09 GMT-0300 (GMT-03:00)
+[debug] [2026-04-09T14:38:09.859Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-04-09T14:38:10.237Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-04-09T14:38:10.238Z] > authorizing via signed-in user (paulograu244grau@gmail.com)
+[debug] [2026-04-09T14:38:10.245Z] Checked if tokens are valid: true, expires at: 1775749012338
+[debug] [2026-04-09T14:38:10.245Z] Checked if tokens are valid: true, expires at: 1775749012338
+[debug] [2026-04-09T14:38:10.247Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects [none]
+[debug] [2026-04-09T14:38:10.247Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"projectId":"olicar-car-2026","name":"Olicar Car"}
+[debug] [2026-04-09T14:38:11.419Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects 200
+[debug] [2026-04-09T14:38:11.420Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"name":"operations/create_project.global.5884327181868069258"}
+[debug] [2026-04-09T14:38:11.421Z] Checked if tokens are valid: true, expires at: 1775749012338
+[debug] [2026-04-09T14:38:11.421Z] Checked if tokens are valid: true, expires at: 1775749012338
+[debug] [2026-04-09T14:38:11.421Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/operations/create_project.global.5884327181868069258 [none]
+[debug] [2026-04-09T14:38:12.216Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/operations/create_project.global.5884327181868069258 200
+[debug] [2026-04-09T14:38:12.217Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/operations/create_project.global.5884327181868069258 {"name":"operations/create_project.global.5884327181868069258","metadata":{"@type":"type.googleapis.com/google.cloudresourcemanager.v1.ProjectCreationStatus","ready":true},"done":true,"error":{"code":9,"message":"Callers must accept Terms of Service","details":[{"@type":"type.googleapis.com/google.rpc.PreconditionFailure","violations":[{"type":"TOS","subject":"cloud","description":"Callers must accept Terms of Service"}]}]}}
+[debug] [2026-04-09T14:38:12.387Z] FirebaseError: Callers must accept Terms of Service
+    at OperationPoller.poll (C:\Users\HOME\AppData\Roaming\npm\node_modules\firebase-tools\lib\operation-poller.js:25:19)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async createCloudProject (C:\Users\HOME\AppData\Roaming\npm\node_modules\firebase-tools\lib\management\projects.js:237:29)
+    at async createFirebaseProjectAndLog (C:\Users\HOME\AppData\Roaming\npm\node_modules\firebase-tools\lib\management\projects.js:102:9)
+[error] 
+[error] Error: Failed to create project. See firebase-debug.log for more info.

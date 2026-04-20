@@ -1,0 +1,41 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function avaliacaoValida() {
+      return request.resource.data.keys().hasOnly([
+        'nome',
+        'nota',
+        'comentario',
+        'fotoUrl',
+        'videoUrl',
+        'criadoEmMs',
+        'criadoEm'
+      ])
+      && request.resource.data.nome is string
+      && request.resource.data.nome.size() > 1
+      && request.resource.data.nome.size() <= 80
+      && request.resource.data.nota is int
+      && request.resource.data.nota >= 1
+      && request.resource.data.nota <= 5
+      && request.resource.data.comentario is string
+      && request.resource.data.comentario.size() > 3
+      && request.resource.data.comentario.size() <= 800
+      && request.resource.data.fotoUrl is string
+      && request.resource.data.fotoUrl.size() <= 2000
+      && request.resource.data.videoUrl is string
+      && request.resource.data.videoUrl.size() <= 2000
+      && request.resource.data.criadoEmMs is int
+      && request.resource.data.criadoEm is string;
+    }
+
+    match /avaliacoes/{docId} {
+      allow read: if true;
+      allow create: if avaliacaoValida();
+      allow update, delete: if false;
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

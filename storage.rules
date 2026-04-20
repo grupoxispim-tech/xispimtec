@@ -1,0 +1,30 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    function imagemValida() {
+      return request.resource != null
+        && request.resource.size < 5 * 1024 * 1024
+        && request.resource.contentType.matches('image/.*');
+    }
+
+    function videoValido() {
+      return request.resource != null
+        && request.resource.size < 20 * 1024 * 1024
+        && request.resource.contentType.matches('video/.*');
+    }
+
+    match /avaliacoes/fotos/{arquivo} {
+      allow read: if true;
+      allow write: if imagemValida();
+    }
+
+    match /avaliacoes/videos/{arquivo} {
+      allow read: if true;
+      allow write: if videoValido();
+    }
+
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

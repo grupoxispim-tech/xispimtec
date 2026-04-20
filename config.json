@@ -1,0 +1,50 @@
+{
+  "empresa": {
+    "nome": "OLICAR",
+    "descricao": "Adicione uma descrição da sua empresa aqui",
+    "slogan": "Qualidade e profissionalismo em primeiro lugar"
+  },
+  "contato": {
+    "telefone": "+55 (XX) 9 XXXX-XXXX",
+    "email": "contato@olicar.com",
+    "endereco": {
+      "rua": "Rua, Número",
+      "cidade": "Cidade",
+      "estado": "Estado",
+      "cep": "CEP"
+    }
+  },
+  "redes_sociais": {
+    "instagram": {
+      "url": "https://instagram.com/seu_usuario",
+      "usuario": "seu_usuario"
+    },
+    "facebook": {
+      "url": "https://facebook.com/sua_pagina",
+      "pagina": "sua_pagina"
+    },
+    "whatsapp": {
+      "url": "https://wa.me/55xxxxxxxxxxxx",
+      "numero": "+55 (XX) 9 XXXX-XXXX"
+    }
+  },
+  "cores": {
+    "primaria": "#667eea",
+    "secundaria": "#764ba2",
+    "sucesso": "#25d366",
+    "aviso": "#f39c12",
+    "fundo": "#f8f9fa",
+    "texto": "#333333"
+  },
+  "galeria": {
+    "pasta": "imagens/",
+    "quantidade_fotos": 6,
+    "extensoes_permitidas": [".jpg", ".jpeg", ".png", ".webp"]
+  },
+  "seo": {
+    "titulo": "OLICAR - Seu Titulo Aqui",
+    "descricao": "Adicione uma descrição meta para SEO aqui",
+    "palavras_chave": ["olicar", "empresa", "serviços"],
+    "autor": "Seu Nome/Empresa"
+  }
+}

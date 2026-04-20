@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de Edição - OLICAR</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 2rem;
+        }
+
+        .section {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section h2 {
+            color: #667eea;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section h2 i {
+            font-size: 1.5rem;
+        }
+
+        .step {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-left: 4px solid #667eea;
+            margin: 1rem 0;
+            border-radius: 5px;
+        }
+
+        .step h3 {
+            color: #333;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .step-number {
+            background: #667eea;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .step p {
+            margin: 0.5rem 0;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            color: #856404;
+            font-weight: 500;
+        }
+
+        .table-simple {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .table-simple th {
+            background: #667eea;
+            color: white;
+            padding: 0.8rem;
+            text-align: left;
+        }
+
+        .table-simple td {
+            padding: 0.8rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .table-simple tr:hover {
+            background: #f8f9fa;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 0.5rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .feature-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .feature-item i {
+            font-size: 1.5rem;
+            color: #667eea;
+            min-width: 30px;
+        }
+
+        .footer-guide {
+            background: #f8f9fa;
+            padding: 2rem;
+            text-align: center;
+            color: #666;
+        }
+
+        .success {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            color: #155724;
+        }
+
+        .warning {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            color: #856404;
+        }
+
+        .error {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+            color: #721c24;
+        }
+
+        .back-to-site {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .section h2 {
+                font-size: 1.3rem;
+            }
+
+            .feature-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <div class="header">
+            <h1>🚗 Guia de Edição OLICAR</h1>
+            <p>Aprenda a personalizar seu site em poucos passos</p>
+        </div>
+
+        <!-- CONTEÚDO -->
+        <div class="content">
+            <!-- INÍCIO RÁPIDO -->
+            <div class="section">
+                <h2><i class="fas fa-rocket"></i> Início Rápido</h2>
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <i class="fas fa-file-code"></i>
+                        <div>
+                            <strong>1. Abra index.html</strong>
+                            <p>Clique duplo para abrir em seu navegador</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-edit"></i>
+                        <div>
+                            <strong>2. Edite as informações</strong>
+                            <p>Use um editor de texto (Notepad++, VS Code)</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-image"></i>
+                        <div>
+                            <strong>3. Adicione suas fotos</strong>
+                            <p>Coloque na pasta imagens/</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-globe"></i>
+                        <div>
+                            <strong>4. Hospede o site</strong>
+                            <p>Coloque online no servidor</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- EDITAR INFORMAÇÕES -->
+            <div class="section">
+                <h2><i class="fas fa-pen"></i> 1. Editar Informações Pessoais</h2>
+                
+                <div class="step">
+                    <h3><span class="step-number">1</span> Abra o arquivo <span class="highlight">index.html</span> com um editor de texto</h3>
+                    <p>Recomendado: Visual Studio Code, Notepad++, Sublime Text</p>
+                </div>
+
+                <div class="step">
+                    <h3><span class="step-number">2</span> Procure pela seção "Sobre a Olicar"</h3>
+                    <p>Localize o texto: <span class="code-block">Adicione sua informação pessoal/empresarial aqui</span></p>
+                    <p>Substitua pelo seu texto descritivo, explicando quem você é e o que faz.</p>
+                </div>
+
+                <div class="step">
+                    <h3><span class="step-number">3</span> Atualize seus dados de contato</h3>
+                    <div class="code-block">
+&lt;p&gt;&lt;a href="tel:+55xx9xxxx-xxxx"&gt;(XX) 9 XXXX-XXXX&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="mailto:olicarautomecanica@hotmail.com"&gt;olicarautomecanica@hotmail.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Rua, Número - Cidade, Estado, CEP&lt;/p&gt;
+                    </div>
+                    <p>Substitua pelos seus dados reais</p>
+                </div>
+
+                <table class="table-simple">
+                    <tr>
+                        <th>Campo</th>
+                        <th>Substitua por</th>
+                        <th>Exemplo</th>
+                    </tr>
+                    <tr>
+                        <td>Telefone</td>
+                        <td>Seu número com DDD</td>
+                        <td>(21) 9 9999-8888</td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>Seu email pessoal/profissional</td>
+                        <td>seu@email.com</td>
+                    </tr>
+                    <tr>
+                        <td>Endereço</td>
+                        <td>Seu endereço completo</td>
+                        <td>Rua A, 123 - Rio de Janeiro, RJ, 20000-000</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- REDES SOCIAIS -->
+            <div class="section">
+                <h2><i class="fas fa-share-alt"></i> 2. Adicionar Redes Sociais</h2>
+                
+                <p>Localize a seção "Redes Sociais" e edite os links:</p>
+
+                <div class="step">
+                    <h3><span class="step-number">1</span> Instagram</h3>
+                    <div class="code-block">
+&lt;a href="https://instagram.com/seu_usuario" target="_blank"&gt;
+                    </div>
+                    <p>Substitua <span class="highlight">seu_usuario</span> pelo seu @usuario do Instagram</p>
+                    <p>Exemplo: <span class="highlight">https://instagram.com/joao.silva</span></p>
+                </div>
+
+                <div class="step">
+                    <h3><span class="step-number">2</span> Facebook</h3>
+                    <div class="code-block">
+&lt;a href="https://facebook.com/sua_pagina" target="_blank"&gt;
+                    </div>
+                    <p>Substitua <span class="highlight">sua_pagina</span> pelo nome da sua página</p>
+                </div>
+
+                <div class="step">
+                    <h3><span class="step-number">3</span> WhatsApp</h3>
+                    <div class="code-block">
+&lt;a href="https://wa.me/55xxxxxxxxxxxx" target="_blank"&gt;
+                    </div>
+                    <p>Substitua pelo seu número: <span class="highlight">55DDD9XXXXXXXX</span></p>
+                    <p>Exemplo: <span class="highlight">https://wa.me/5521987654321</span></p>
+                </div>
+
+                <div class="warning step">
+                    <h3><i class="fas fa-exclamation-triangle"></i> Atenção ao número WhatsApp</h3>
+                    <p>Use só números: 55 + DDD (2 dígitos) + número (9 dígitos)</p>
+                    <p>Não coloque parênteses, hífens ou espaços!</p>
+                </div>
+            </div>
+
+            <!-- GALERIA DE FOTOS -->
+            <div class="section">
+                <h2><i class="fas fa-images"></i> 3. Gerenciar Galeria de Fotos</h2>
+
+                <div class="step">
+                    <h3><span class="step-number">1</span> Coloque suas fotos na pasta <span class="highlight">imagens/</span></h3>
+                    <p>Formatos aceitos: JPG, JPEG, PNG, WEBP</p>
+                    <p>Tamanho recomendado: 500x500px ou 1000x1000px</p>
+                </div>
+
+                <div class="step">
+                    <h3><span class="step-number">2</span> Abra <span class="highlight">index.html</span> e procure a galeria</h3>
+                    <p>Procure por: <span class="code-block">&lt;section id="galeria"&gt;</span></p>
+                </div>
+
+                <div class="step">
+                    <h3><span class="step-number">3</span> Para adicionar mais fotos, copie e cole:</h3>
+                    <div class="code-block">
+&lt;div class="galeria-item"&gt;
+    &lt;img src="imagens/NUMERO.jpg" alt="Foto NUMERO"&gt;
+    &lt;div class="galeria-overlay"&gt;
+        &lt;h3&gt;Descrição da Foto&lt;/h3&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+                    </div>
+                    <p>Substitua <span class="highlight">NUMERO</span> pelo número da sua foto</p>
+                </div>
+
+                <div class="success step">
+                    <h3><i class="fas fa-check-circle"></i> Dica</h3>
+                    <p>Você pode ter quantas fotos quiser! Adicione mais itens conforme necessário.</p>
+                </div>
+            </div>
+
+            <!-- PERSONALIZAR CORES -->
+            <div class="section">
+                <h2><i class="fas fa-palette"></i> 4. Mudar Cores do Site</h2>
+
+                <p>O site usa cores em degradê. Para mudar:</p>
+
+                <div class="step">
+                    <h3><span class="step-number">1</span> Abra o arquivo <span class="highlight">styles.css</span></h3>
+                </div>
+
+                <div class="step">
+                    <h3><span class="step-number">2</span> Procure por estas cores:</h3>
+                    <table class="table-simple">
+                        <tr>
+                            <th>Cor Atual</th>
+                            <th>Uso</th>
+                            <th>Substitua por</th>
+                        </tr>
+                        <tr>
+                            <td>#667eea</td>
+                            <td>Azul (Principal)</td>
+                            <td>Sua cor principal</td>
+                        </tr>
+                        <tr>
+                            <td>#764ba2</td>
+                            <td>Roxo (Secundária)</td>
+                            <td>Sua cor secundária</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="step">
+                    <h3><span class="step-number">3</span> Use um gerador de cores</h3>
+                    <p>Procure online por "Color Picker" ou "Gerador de cores HEX"</p>
+                    <p>Copie o código da cor (exemplo: #FF5733) e substitua no CSS</p>
+                </div>
+            </div>
+
+            <!-- PUBLICAR ONLINE -->
+            <div class="section">
+                <h2><i class="fas fa-cloud-upload-alt"></i> 5. Publicar o Site Online</h2>
+
+                <p>Opções gratuitas para colocar seu site na internet:</p>
+
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <i class="fas fa-github"></i>
+                        <div>
+                            <strong>GitHub Pages</strong>
+                            <p>Gratuito, fácil e confiável</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-rocket"></i>
+                        <div>
+                            <strong>Netlify</strong>
+                            <p>Hospedagem super rápida e fácil</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-server"></i>
+                        <div>
+                            <strong>Vercel</strong>
+                            <p>Excelente desempenho</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-globe"></i>
+                        <div>
+                            <strong>000webhost</strong>
+                            <p>Hospedagem gratuita com domínio</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <h3>Para Netlify (Recomendado)</h3>
+                    <p>1. Acesse <a href="https://netlify.com" target="_blank">netlify.com</a></p>
+                    <p>2. Arraste a pasta do seu site</p>
+                    <p>3. Pronto! Seu site estará online</p>
+                </div>
+            </div>
+
+            <!-- DICAS EXTRAS -->
+            <div class="section">
+                <h2><i class="fas fa-lightbulb"></i> Dicas Extras</h2>
+
+                <div class="feature-list">
+                    <div class="feature-item success" style="border-left: 4px solid #28a745;">
+                        <i class="fas fa-image"></i>
+                        <div>
+                            <strong>Qualidade de Fotos</strong>
+                            <p>Use imagens de alta resolução, mas não muito pesadas (máx 2MB)</p>
+                        </div>
+                    </div>
+                    <div class="feature-item success" style="border-left: 4px solid #28a745;">
+                        <i class="fas fa-mobile-alt"></i>
+                        <div>
+                            <strong>Teste em Mobile</strong>
+                            <p>Sempre abra o site no seu celular para verificar como fica</p>
+                        </div>
+                    </div>
+                    <div class="feature-item success" style="border-left: 4px solid #28a745;">
+                        <i class="fas fa-link"></i>
+                        <div>
+                            <strong>Links Funcionando</strong>
+                            <p>Sempre teste os links antes de publicar</p>
+                        </div>
+                    </div>
+                    <div class="feature-item success" style="border-left: 4px solid #28a745;">
+                        <i class="fas fa-refresh"></i>
+                        <div>
+                            <strong>Limpe Cache</strong>
+                            <p>Pressione Ctrl+Shift+Del para limpar cache e ver alterações</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="back-to-site">
+                <h3>Pronto para começar?</h3>
+                <a href="index.html" class="btn">👈 Voltar para o Site</a>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer-guide">
+            <p>📧 Dúvidas? Consulte o arquivo README.md</p>
+            <p>Desenvolvido com ❤️ para seu sucesso! 🚗</p>
+        </div>
+    </div>
+</body>
+</html>
