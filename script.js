@@ -1,504 +1,739 @@
-// SCRIPT INTERATIVO
+﻿// ========================================
+// VARIÃVEIS GLOBAIS
+// ========================================
 
-// Menu Mobile
-const hamburger = document.querySelector('.hamburger');
-const navMenu = document.querySelector('.nav-menu');
+const navbar = document.querySelector('.navbar');
+const menuToggle = document.querySelector('.menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+const contactForm = document.getElementById('contactForm');
+const reviewForm = document.getElementById('reviewForm');
+const reviewsList = document.getElementById('reviewsList');
+const reviewsStatus = document.getElementById('reviewsStatus');
+const privacyLink = document.querySelector('.privacy-link');
+const privacyModal = document.getElementById('privacyModal');
+const modalClose = document.querySelector('.modal-close');
 
-if (hamburger) {
-    hamburger.addEventListener('click', () => {
-        navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
-        hamburger.classList.toggle('active');
+const reviewsConfig = window.REVIEWS_DB_CONFIG || {};
+const supabaseUrl = (reviewsConfig.supabaseUrl || '').trim();
+const supabaseAnonKey = (reviewsConfig.supabaseAnonKey || '').trim();
+const hasReviewsDbConfig = Boolean(
+    supabaseUrl &&
+    supabaseAnonKey &&
+    !supabaseUrl.includes('SEU') &&
+    !supabaseAnonKey.includes('SEU')
+);
+
+// ========================================
+// MENU RESPONSIVO
+// ========================================
+
+if (menuToggle) {
+    menuToggle.addEventListener('click', () => {
+        menuToggle.classList.toggle('active');
+        navLinks.classList.toggle('active');
+    });
+
+    // Fechar menu ao clicar em um link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            menuToggle.classList.remove('active');
+            navLinks.classList.remove('active');
+        });
     });
 }
 
-// Fechar menu ao clicar em um link
-const navLinks = document.querySelectorAll('.nav-link');
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        if (navMenu) {
-            navMenu.style.display = 'none';
-        }
-        if (hamburger) {
-            hamburger.classList.remove('active');
-        }
-    });
-});
+// ========================================
+// NAVBAR STICKY COM EFEITO
+// ========================================
 
-// Efeito scroll suave
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
+// scroll handler removido (navbar não é mais fixa)
+
+// ========================================
+// FORMULÃRIO DE CONTATO
+// ========================================
+
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
+
+        const name = document.getElementById('name').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const message = document.getElementById('message').value.trim();
+
+        // Validação básica
+        if (!name || !phone || !message) {
+            showNotification('Por favor, preencha todos os campos obrigatórios (*).', 'error');
+            return;
         }
+
+        // Formatar mensagem para WhatsApp
+        const whatsappMessage = `
+*NOVO CONTATO DO SITE XISPIMTEC*
+
+*Nome:* ${name}
+*Telefone:* ${phone}
+${email ? `*E-mail:* ${email}` : ''}
+*Mensagem:* ${message}
+        `.trim();
+
+        // Codificar mensagem
+        const encodedMessage = encodeURIComponent(whatsappMessage);
+
+        // Redirecionar para WhatsApp
+        const whatsappUrl = `https://wa.me/5547992505922?text=${encodedMessage}`;
+
+        // Mostrar mensagem de sucesso
+        showNotification('Redirecionando para WhatsApp...', 'success');
+
+        // Limpar formulário
+        setTimeout(() => {
+            contactForm.reset();
+            window.open(whatsappUrl, '_blank');
+        }, 1000);
     });
+}
+
+// ========================================
+// FORMULÁRIO DE AVALIAÇÃO
+// ========================================
+
+if (reviewForm) {
+    const ratingInput = document.getElementById('reviewRating');
+    const ratingStars = reviewForm.querySelectorAll('.rating-star');
+    const ratingAverageEl = document.getElementById('ratingAverage');
+    const ratingPct5El = document.getElementById('ratingPct5');
+    const ratingPct4El = document.getElementById('ratingPct4');
+    const ratingPct3El = document.getElementById('ratingPct3');
+    const ratingPct2El = document.getElementById('ratingPct2');
+    const ratingTotalCountEl = document.getElementById('ratingTotalCount');
+
+    const escapeHtml = (value) => {
+        return String(value)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
+    };
+
+    const renderRatingStats = (reviews) => {
+        if (!reviews.length) {
+            ratingAverageEl.textContent = '-';
+            ratingPct5El.textContent = '0%';
+            ratingPct4El.textContent = '0%';
+            ratingPct3El.textContent = '0%';
+            ratingPct2El.textContent = '0%';
+            ratingTotalCountEl.textContent = 'Baseado em 0 avaliações verificadas.';
+            return;
+        }
+
+        const total = reviews.length;
+        const sum = reviews.reduce((acc, item) => acc + Number(item.rating || 0), 0);
+        const average = (sum / total).toFixed(1);
+        const five = reviews.filter((item) => Number(item.rating) === 5).length;
+        const four = reviews.filter((item) => Number(item.rating) === 4).length;
+        const three = reviews.filter((item) => Number(item.rating) === 3).length;
+        const twoOrLess = reviews.filter((item) => Number(item.rating) <= 2).length;
+
+        const pct = (value) => `${Math.round((value / total) * 100)}%`;
+
+        ratingAverageEl.textContent = average;
+        ratingPct5El.textContent = pct(five);
+        ratingPct4El.textContent = pct(four);
+        ratingPct3El.textContent = pct(three);
+        ratingPct2El.textContent = pct(twoOrLess);
+        ratingTotalCountEl.textContent = `Baseado em ${total} avaliações verificadas.`;
+    };
+
+    const renderReviews = (reviews) => {
+        if (!reviewsList) {
+            return;
+        }
+
+        if (!reviews.length) {
+            reviewsList.innerHTML = '';
+            if (reviewsStatus) {
+                reviewsStatus.textContent = 'Ainda não há comentários publicados.';
+            }
+            return;
+        }
+
+        if (reviewsStatus) {
+            reviewsStatus.textContent = `${reviews.length} comentário(s) mais recente(s).`;
+        }
+
+        reviewsList.innerHTML = reviews.map((item) => {
+            const safeName = escapeHtml(item.name || 'Cliente');
+            const safeComment = escapeHtml(item.comment || '');
+            const rating = Math.max(1, Math.min(5, Number(item.rating || 0)));
+            const stars = '★'.repeat(rating) + '☆'.repeat(5 - rating);
+            const createdAt = item.created_at ? new Date(item.created_at) : null;
+            const dateText = createdAt && !Number.isNaN(createdAt.getTime())
+                ? createdAt.toLocaleDateString('pt-BR')
+                : 'agora';
+
+            return `
+                <article class="review-item">
+                    <div class="review-item-header">
+                        <span class="review-item-name">${safeName}</span>
+                        <span class="review-item-date">${dateText}</span>
+                    </div>
+                    <div class="review-item-stars" aria-label="${rating} de 5 estrelas">${stars}</div>
+                    <p class="review-item-comment">${safeComment}</p>
+                </article>
+            `;
+        }).join('');
+    };
+
+    const setConfigMessage = () => {
+        renderRatingStats([]);
+        if (reviewsStatus) {
+            reviewsStatus.textContent = 'Configure o banco para ativar comentários permanentes para todos.';
+        }
+    };
+
+    const fetchReviews = async () => {
+        if (!hasReviewsDbConfig) {
+            setConfigMessage();
+            return;
+        }
+
+        if (reviewsStatus) {
+            reviewsStatus.textContent = 'Carregando comentários...';
+        }
+
+        try {
+            const endpoint = `${supabaseUrl}/rest/v1/reviews?select=id,name,rating,comment,created_at&order=created_at.desc&limit=50`;
+            const response = await fetch(endpoint, {
+                method: 'GET',
+                headers: {
+                    apikey: supabaseAnonKey,
+                    Authorization: `Bearer ${supabaseAnonKey}`
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error('Falha ao carregar comentários');
+            }
+
+            const reviews = await response.json();
+            renderRatingStats(reviews);
+            renderReviews(reviews);
+        } catch (error) {
+            renderRatingStats([]);
+            if (reviewsStatus) {
+                reviewsStatus.textContent = 'Não foi possível carregar os comentários agora.';
+            }
+        }
+    };
+
+    const paintStars = (value) => {
+        ratingStars.forEach((star) => {
+            const starValue = Number(star.dataset.rating);
+            const icon = star.querySelector('i');
+
+            if (starValue <= value) {
+                star.classList.add('active');
+                if (icon) {
+                    icon.classList.remove('far');
+                    icon.classList.add('fas');
+                }
+            } else {
+                star.classList.remove('active');
+                if (icon) {
+                    icon.classList.remove('fas');
+                    icon.classList.add('far');
+                }
+            }
+        });
+    };
+
+    ratingStars.forEach((star) => {
+        star.addEventListener('click', () => {
+            const selectedValue = Number(star.dataset.rating);
+            ratingInput.value = selectedValue;
+            paintStars(selectedValue);
+        });
+    });
+
+    reviewForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById('reviewName').value.trim();
+        const comment = document.getElementById('reviewComment').value.trim();
+        const rating = Number(ratingInput.value);
+
+        if (!name || !comment || rating < 1) {
+            showNotification('Preencha nome, comentário e escolha uma nota de 1 a 5 estrelas.', 'error');
+            return;
+        }
+
+        if (!hasReviewsDbConfig) {
+            showNotification('Configure o banco para salvar comentários para todos os visitantes.', 'error');
+            return;
+        }
+
+        const payload = {
+            name: name.slice(0, 80),
+            rating,
+            comment: comment.slice(0, 1000)
+        };
+
+        fetch(`${supabaseUrl}/rest/v1/reviews`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Prefer: 'return=representation',
+                apikey: supabaseAnonKey,
+                Authorization: `Bearer ${supabaseAnonKey}`
+            },
+            body: JSON.stringify(payload)
+        })
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Falha ao salvar comentário');
+                }
+
+                showNotification('Comentário publicado com sucesso!', 'success');
+                reviewForm.reset();
+                ratingInput.value = '0';
+                paintStars(0);
+                fetchReviews();
+            })
+            .catch(() => {
+                showNotification('Não foi possível salvar o comentário agora.', 'error');
+            });
+    });
+
+    fetchReviews();
+}
+
+// ========================================
+// NOTIFICAÃ‡Ã•ES
+// ========================================
+
+function showNotification(message, type = 'info') {
+    const notification = document.createElement('div');
+    notification.style.cssText = `
+        position: fixed;
+        top: 100px;
+        right: 20px;
+        max-width: 400px;
+        padding: 20px 25px;
+        background: ${type === 'success' ? 'linear-gradient(135deg, #2A9DCC, #53BCE6)' : type === 'error' ? '#ff6b6b' : '#2A9DCC'};
+        color: ${type === 'success' ? '#0a1a1a' : 'white'};
+        border-radius: 8px;
+        box-shadow: 0 6px 30px rgba(42, 157, 204, 0.3);
+        font-weight: 600;
+        z-index: 9999;
+        animation: slideInRight 0.3s ease-out;
+    `;
+    notification.textContent = message;
+
+    document.body.appendChild(notification);
+
+    setTimeout(() => {
+        notification.style.animation = 'slideOutRight 0.3s ease-out';
+        setTimeout(() => {
+            notification.remove();
+        }, 300);
+    }, 4000);
+}
+
+// ========================================
+// MODAL POLÃTICA DE PRIVACIDADE
+// ========================================
+
+if (privacyLink) {
+    privacyLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        privacyModal.classList.add('show');
+        document.body.style.overflow = 'hidden';
+    });
+}
+
+if (modalClose) {
+    modalClose.addEventListener('click', () => {
+        privacyModal.classList.remove('show');
+        document.body.style.overflow = 'auto';
+    });
+}
+
+// Fechar modal ao clicar fora
+window.addEventListener('click', (e) => {
+    if (e.target === privacyModal) {
+        privacyModal.classList.remove('show');
+        document.body.style.overflow = 'auto';
+    }
 });
 
-// Animar elementos ao scrollar
+// ========================================
+// ANIMAÃ‡Ã•ES AO SCROLL
+// ========================================
+
 const observerOptions = {
     threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
+    rootMargin: '0px 0px -50px 0px'
 };
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.style.animation = 'slideInUp 0.6s ease forwards';
+            entry.target.classList.add('fade-in');
             observer.unobserve(entry.target);
         }
     });
 }, observerOptions);
 
-// Observar elementos da galeria
-document.querySelectorAll('.galeria-item').forEach(item => {
-    observer.observe(item);
+// Observar elementos para animaÃ§Ã£o
+document.querySelectorAll('.service-card, .testimonial-card, .portfolio-item, .differential-item, .stat-card').forEach(el => {
+    observer.observe(el);
 });
 
-// Efeito de digitação no hero
-function typeWriter(element, text, speed = 50) {
-    let i = 0;
-    element.innerHTML = '';
-    
-    function type() {
-        if (i < text.length) {
-            element.innerHTML += text.charAt(i);
-            i++;
-            setTimeout(type, speed);
-        }
-    }
-    
-    type();
-}
+// ========================================
+// SCROLL SUAVE
+// ========================================
 
-// Adicionar contador de visitas (opcional)
-function initVisitCounter() {
-    let visitCount = localStorage.getItem('visitCount');
-    visitCount = visitCount ? parseInt(visitCount) + 1 : 1;
-    localStorage.setItem('visitCount', visitCount);
-}
-
-initVisitCounter();
-
-// Lightbox para galeria (ao clicar na imagem)
-document.querySelectorAll('.galeria-item').forEach(item => {
-    item.addEventListener('click', function() {
-        const img = this.querySelector('img');
-        const src = img.src;
-        showLightbox(src);
-    });
-});
-
-function showLightbox(src) {
-    const lightbox = document.createElement('div');
-    lightbox.style.cssText = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.9);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 2000;
-        cursor: pointer;
-    `;
-    
-    const img = document.createElement('img');
-    img.src = src;
-    img.style.cssText = `
-        max-width: 90%;
-        max-height: 90%;
-        border-radius: 10px;
-    `;
-    
-    lightbox.appendChild(img);
-    document.body.appendChild(lightbox);
-    
-    lightbox.addEventListener('click', () => {
-        lightbox.remove();
-    });
-}
-
-// Validação de formulário (se adicionar formulário de contato)
-function validateForm(form) {
-    const inputs = form.querySelectorAll('input, textarea');
-    let isValid = true;
-    
-    inputs.forEach(input => {
-        if (!input.value.trim()) {
-            input.style.borderColor = 'red';
-            isValid = false;
-        } else {
-            input.style.borderColor = '#ddd';
-        }
-    });
-    
-    return isValid;
-}
-
-// Avaliacoes com preview e persistencia permanente no Supabase
-const avaliacaoForm = document.querySelector('#avaliacao-form');
-const avaliacaoFotoInput = document.querySelector('#avaliacao-foto');
-const avaliacaoVideoInput = document.querySelector('#avaliacao-video');
-const previewFoto = document.querySelector('#preview-foto');
-const previewVideo = document.querySelector('#preview-video');
-const previewFotoPlaceholder = document.querySelector('#preview-foto-placeholder');
-const previewVideoPlaceholder = document.querySelector('#preview-video-placeholder');
-const avaliacaoStatus = document.querySelector('#avaliacao-status');
-const avaliacoesLista = document.querySelector('#avaliacoes-lista');
-let supabaseClient = null;
-let canalTempoReal = null;
-
-function supabaseEstaConfigurado() {
-    const cfg = window.OLICAR_SUPABASE_CONFIG;
-    if (!cfg) {
-        return false;
-    }
-
-    const obrigatorios = ['url', 'anonKey'];
-    return obrigatorios.every((campo) => typeof cfg[campo] === 'string' && cfg[campo].trim() !== '');
-}
-
-function inicializarSupabase() {
-    if (!window.supabase || !supabaseEstaConfigurado()) {
-        return;
-    }
-
-    supabaseClient = window.supabase.createClient(
-        window.OLICAR_SUPABASE_CONFIG.url,
-        window.OLICAR_SUPABASE_CONFIG.anonKey
-    );
-}
-
-function estrelasPorNota(nota) {
-    return '★'.repeat(nota) + '☆'.repeat(5 - nota);
-}
-
-function renderizarAvaliacoes(avaliacoes) {
-    if (!avaliacoesLista) {
-        return;
-    }
-
-    avaliacoesLista.innerHTML = '';
-
-    if (!avaliacoes.length) {
-        avaliacoesLista.innerHTML = '<p class="avaliacoes-vazia">Ainda nao ha avaliacoes publicadas.</p>';
-        return;
-    }
-
-    avaliacoes.forEach((avaliacao) => {
-        const item = document.createElement('article');
-        item.className = 'avaliacao-item';
-
-        const topo = document.createElement('div');
-        topo.className = 'avaliacao-item-topo';
-
-        const nome = document.createElement('strong');
-        nome.textContent = avaliacao.nome;
-
-        const nota = document.createElement('span');
-        nota.className = 'avaliacao-nota';
-        nota.textContent = estrelasPorNota(avaliacao.nota);
-
-        topo.appendChild(nome);
-        topo.appendChild(nota);
-
-        const comentario = document.createElement('p');
-        comentario.textContent = avaliacao.comentario;
-
-        item.appendChild(topo);
-        item.appendChild(comentario);
-
-        const fotoSrc = avaliacao.fotoUrl;
-        if (fotoSrc) {
-            const foto = document.createElement('img');
-            foto.className = 'avaliacao-midia';
-            foto.src = fotoSrc;
-            foto.alt = `Foto da avaliacao de ${avaliacao.nome}`;
-            item.appendChild(foto);
-        }
-
-        const videoSrc = avaliacao.videoUrl;
-        if (videoSrc) {
-            const video = document.createElement('video');
-            video.className = 'avaliacao-midia';
-            video.src = videoSrc;
-            video.controls = true;
-            item.appendChild(video);
-        }
-
-        avaliacoesLista.appendChild(item);
-    });
-}
-
-async function renderizarAvaliacoesIniciais() {
-    if (!supabaseClient) {
-        renderizarAvaliacoes([]);
-        if (avaliacaoStatus) {
-            avaliacaoStatus.textContent = 'Para salvar para sempre, preencha o supabase-config.js com seu projeto Supabase.';
-        }
-        return;
-    }
-
-    try {
-        const remotas = await carregarAvaliacoesSupabase();
-        renderizarAvaliacoes(remotas);
-        if (avaliacaoStatus) {
-            avaliacaoStatus.textContent = 'Modo online ativo. Avaliacoes salvas na nuvem.';
-        }
-    } catch (erro) {
-        renderizarAvaliacoes([]);
-        if (avaliacaoStatus) {
-            avaliacaoStatus.textContent = 'Nao foi possivel carregar as avaliacoes na nuvem agora.';
-        }
-    }
-}
-
-async function carregarAvaliacoesSupabase() {
-    if (!supabaseClient) {
-        return [];
-    }
-
-    const { data, error } = await supabaseClient
-        .from('avaliacoes')
-        .select('nome, nota, comentario, foto_url, video_url, criado_em_ms')
-        .order('criado_em_ms', { ascending: false })
-        .limit(20);
-
-    if (error) {
-        throw error;
-    }
-
-    return (data || []).map((linha) => ({
-        nome: linha.nome || 'Cliente',
-        nota: Number(linha.nota || 0),
-        comentario: linha.comentario || '',
-        fotoUrl: linha.foto_url || '',
-        videoUrl: linha.video_url || '',
-        criadoEmMs: Number(linha.criado_em_ms || 0)
-    }));
-}
-
-function iniciarListenerAvaliacoesTempoReal() {
-    if (!supabaseClient) {
-        return;
-    }
-
-    if (canalTempoReal) {
-        supabaseClient.removeChannel(canalTempoReal);
-        canalTempoReal = null;
-    }
-
-    canalTempoReal = supabaseClient
-        .channel('avaliacoes-tempo-real')
-        .on(
-            'postgres_changes',
-            { event: '*', schema: 'public', table: 'avaliacoes' },
-            async () => {
-                try {
-                    const remotas = await carregarAvaliacoesSupabase();
-                    renderizarAvaliacoes(remotas);
-                    if (avaliacaoStatus) {
-                        avaliacaoStatus.textContent = 'Modo online ativo. Avaliacoes em tempo real.';
-                    }
-                } catch (error) {
-                    if (avaliacaoStatus) {
-                        avaliacaoStatus.textContent = 'Nao foi possivel atualizar as avaliacoes em tempo real.';
-                    }
-                }
-            }
-        )
-        .subscribe();
-}
-
-async function uploadMidiaSupabase(arquivo, tipo) {
-    if (!arquivo || !supabaseClient) {
-        return '';
-    }
-
-    const nomeSeguro = arquivo.name.replace(/[^a-zA-Z0-9._-]/g, '_');
-    const caminho = `${tipo}/${Date.now()}-${Math.random().toString(36).slice(2)}-${nomeSeguro}`;
-
-    const { error } = await supabaseClient
-        .storage
-        .from('avaliacoes-midia')
-        .upload(caminho, arquivo, { upsert: false });
-
-    if (error) {
-        throw error;
-    }
-
-    const { data } = supabaseClient
-        .storage
-        .from('avaliacoes-midia')
-        .getPublicUrl(caminho);
-
-    return data && data.publicUrl ? data.publicUrl : '';
-}
-
-function atualizarPreviewArquivo(input, elementoMidia, elementoPlaceholder, tipo) {
-    if (!input || !elementoMidia || !elementoPlaceholder) {
-        return;
-    }
-
-    const arquivo = input.files && input.files[0];
-    const urlAnterior = elementoMidia.dataset.objectUrl;
-
-    if (urlAnterior) {
-        URL.revokeObjectURL(urlAnterior);
-        delete elementoMidia.dataset.objectUrl;
-    }
-
-    if (!arquivo) {
-        elementoMidia.classList.add('preview-hidden');
-        elementoPlaceholder.style.display = 'block';
-        if (tipo === 'video') {
-            elementoMidia.removeAttribute('src');
-            elementoMidia.load();
-        }
-        return;
-    }
-
-    const novaUrl = URL.createObjectURL(arquivo);
-    elementoMidia.src = novaUrl;
-    elementoMidia.dataset.objectUrl = novaUrl;
-    elementoMidia.classList.remove('preview-hidden');
-    elementoPlaceholder.style.display = 'none';
-}
-
-if (avaliacaoFotoInput) {
-    avaliacaoFotoInput.addEventListener('change', () => {
-        atualizarPreviewArquivo(avaliacaoFotoInput, previewFoto, previewFotoPlaceholder, 'foto');
-    });
-}
-
-if (avaliacaoVideoInput) {
-    avaliacaoVideoInput.addEventListener('change', () => {
-        atualizarPreviewArquivo(avaliacaoVideoInput, previewVideo, previewVideoPlaceholder, 'video');
-    });
-}
-
-if (avaliacaoForm) {
-    avaliacaoForm.addEventListener('submit', async (event) => {
-        event.preventDefault();
-
-        const nomeInput = document.querySelector('#avaliacao-nome');
-        const notaInput = document.querySelector('#avaliacao-nota');
-        const comentarioInput = document.querySelector('#avaliacao-comentario');
-
-        const nome = nomeInput ? nomeInput.value.trim() : '';
-        const nota = notaInput ? Number(notaInput.value) : 0;
-        const comentario = comentarioInput ? comentarioInput.value.trim() : '';
-
-        if (!nome || !nota || !comentario) {
-            if (avaliacaoStatus) {
-                avaliacaoStatus.textContent = 'Preencha nome, nota e comentario para enviar.';
-            }
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href === '#') {
+            e.preventDefault();
             return;
         }
+        if (document.querySelector(href)) {
+            e.preventDefault();
+            const target = document.querySelector(href);
+            const headerOffset = 80;
+            const elementPosition = target.getBoundingClientRect().top + window.scrollY;
+            const offsetPosition = elementPosition - headerOffset;
 
-        const fotoArquivo = avaliacaoFotoInput && avaliacaoFotoInput.files ? avaliacaoFotoInput.files[0] : null;
-        const videoArquivo = avaliacaoVideoInput && avaliacaoVideoInput.files ? avaliacaoVideoInput.files[0] : null;
-
-        if (avaliacaoStatus) {
-            avaliacaoStatus.textContent = 'Enviando avaliacao...';
-        }
-
-        try {
-            if (!supabaseClient) {
-                if (avaliacaoStatus) {
-                    avaliacaoStatus.textContent = 'Configure o Supabase para salvar comentarios para sempre.';
-                }
-                return;
-            }
-
-            const fotoUrl = await uploadMidiaSupabase(fotoArquivo, 'fotos');
-            const videoUrl = await uploadMidiaSupabase(videoArquivo, 'videos');
-            const payload = {
-                nome,
-                nota,
-                comentario,
-                foto_url: fotoUrl,
-                video_url: videoUrl,
-                criado_em_ms: Date.now()
-            };
-
-            const { error } = await supabaseClient.from('avaliacoes').insert(payload);
-            if (error) {
-                throw error;
-            }
-
-            if (avaliacaoStatus) {
-                avaliacaoStatus.textContent = 'Avaliacao enviada com sucesso. Obrigado pelo feedback!';
-            }
-        } catch (erro) {
-            if (avaliacaoStatus) {
-                avaliacaoStatus.textContent = 'Nao foi possivel enviar agora. Verifique o Supabase e tente novamente.';
-            }
-        }
-
-        avaliacaoForm.reset();
-        atualizarPreviewArquivo(avaliacaoFotoInput, previewFoto, previewFotoPlaceholder, 'foto');
-        atualizarPreviewArquivo(avaliacaoVideoInput, previewVideo, previewVideoPlaceholder, 'video');
-    });
-}
-
-inicializarSupabase();
-renderizarAvaliacoesIniciais();
-iniciarListenerAvaliacoesTempoReal();
-
-// Ativar navegação ativa
-window.addEventListener('scroll', () => {
-    let current = '';
-    const sections = document.querySelectorAll('section');
-    
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (pageYOffset >= sectionTop - 200) {
-            current = section.getAttribute('id');
-        }
-    });
-    
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href').slice(1) === current) {
-            link.classList.add('active');
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
         }
     });
 });
 
-// Console message
-console.log('🚗 Bem-vindo ao site OLICAR! Site desenvolvido com ❤️');
+// ========================================
+// CONTADOR DE ESTATÃSTICAS (ANIMAÃ‡ÃƒO)
+// ========================================
 
-// Inicializar tooltips (opcional)
-function initTooltips() {
-    document.querySelectorAll('[data-tooltip]').forEach(element => {
-        element.addEventListener('mouseenter', function() {
-            const tooltip = document.createElement('div');
-            tooltip.textContent = this.dataset.tooltip;
-            tooltip.style.cssText = `
-                position: absolute;
-                background: #333;
-                color: white;
-                padding: 5px 10px;
-                border-radius: 5px;
-                font-size: 0.8rem;
-                white-space: nowrap;
-                z-index: 1001;
-            `;
-            document.body.appendChild(tooltip);
-            
-            this.addEventListener('mouseleave', () => {
-                tooltip.remove();
-            });
-        });
+function animateCounter(element, target) {
+    const duration = 2000;
+    const start = Date.now();
+    const startValue = 0;
+
+    const animate = () => {
+        const elapsed = Date.now() - start;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // Extrair nÃºmero do texto target
+        const numericTarget = parseInt(target.toString().replace(/\D/g, ''));
+        const current = Math.floor(numericTarget * progress);
+        
+        element.textContent = current + (target.includes('%') ? '%' : target.includes('+') ? '+' : '');
+        
+        if (progress < 1) {
+            requestAnimationFrame(animate);
+        } else {
+            element.textContent = target;
+        }
+    };
+
+    requestAnimationFrame(animate);
+}
+
+// Observar stats para ativar animaÃ§Ã£o
+const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+            entry.target.classList.add('animated');
+            const statNumber = entry.target.querySelector('.stat-number');
+            const targetValue = statNumber.textContent;
+            animateCounter(statNumber, targetValue);
+            statsObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.stat-card').forEach(card => {
+    statsObserver.observe(card);
+});
+
+// ========================================
+// EFEITO PARALLAX SUAVE
+// ========================================
+
+window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    
+    // Parallax na hero
+    const hero = document.querySelector('.hero');
+    if (hero) {
+        hero.style.backgroundPosition = `0 ${scrolled * 0.5}px`;
+    }
+
+    // Parallax nos Ã­cones
+    const hexElements = document.querySelectorAll('.hex');
+    hexElements.forEach((hex, index) => {
+        hex.style.transform = `translateY(${scrolled * (0.1 + index * 0.05)}px)`;
+    });
+});
+
+// ========================================
+// VALIDAÃ‡ÃƒO DE TELEFONE
+// ========================================
+
+const phoneInput = document.getElementById('phone');
+if (phoneInput) {
+    phoneInput.addEventListener('input', (e) => {
+        let value = e.target.value.replace(/\D/g, '');
+        
+        if (value.length > 0) {
+            if (value.length <= 2) {
+                value = `(${value}`;
+            } else if (value.length <= 7) {
+                value = `(${value.slice(0, 2)}) ${value.slice(2)}`;
+            } else {
+                value = `(${value.slice(0, 2)}) ${value.slice(2, 7)}-${value.slice(7, 11)}`;
+            }
+        }
+        
+        e.target.value = value;
     });
 }
 
-initTooltips();
+// ========================================
+// VALIDAÃ‡ÃƒO DE E-MAIL EM TEMPO REAL
+// ========================================
+
+const emailInput = document.getElementById('email');
+if (emailInput) {
+    emailInput.addEventListener('blur', () => {
+        const email = emailInput.value.trim();
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        
+        if (email && !emailRegex.test(email)) {
+            showNotification('Por favor, insira um e-mail válido.', 'error');
+        }
+    });
+}
+
+// ========================================
+// EFEITO NO HOVER DE CARDS
+// ========================================
+
+const cards = document.querySelectorAll('.service-card, .testimonial-card, .portfolio-item');
+cards.forEach(card => {
+    card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-10px) scale(1.02)';
+    });
+    
+    card.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0) scale(1)';
+    });
+});
+
+// ========================================
+// LAZY LOADING DE IMAGENS
+// ========================================
+
+if ('IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.classList.remove('lazy');
+                imageObserver.unobserve(img);
+            }
+        });
+    });
+
+    document.querySelectorAll('img.lazy').forEach(img => {
+        imageObserver.observe(img);
+    });
+}
+
+// ========================================
+// DETECÃ‡ÃƒO DE DISPOSITIVO MÃ“VEL
+// ========================================
+
+const isMobileDevice = () => {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+};
+
+// ========================================
+// OTIMIZAÃ‡ÃƒO DE PERFORMANCE
+// ========================================
+
+// Debounce para eventos de scroll
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// Throttle para eventos contÃ­nuos
+function throttle(func, limit) {
+    let inThrottle;
+    return function(...args) {
+        if (!inThrottle) {
+            func.apply(this, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    };
+}
+
+// ========================================
+// PRELOAD DE RECURSOS
+// ========================================
+
+// Precarregar fontes do Google Fonts
+const link = document.createElement('link');
+link.rel = 'preconnect';
+link.href = 'https://fonts.googleapis.com';
+document.head.appendChild(link);
+
+// ========================================
+// DARK MODE DETECTOR
+// ========================================
+
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+if (prefersDark.matches) {
+    document.documentElement.style.colorScheme = 'dark';
+}
+
+// ========================================
+// INICIALIZAÃ‡ÃƒO
+// ========================================
+
+document.addEventListener('DOMContentLoaded', () => {
+    // AnimaÃ§Ã£o ao carregar
+    document.body.style.animation = 'fadeIn 0.5s ease-out';
+    
+    // Log de inicialização (remover em produção)
+    console.log('%cXispimtec - Site carregado com sucesso!', 'color: #2A9DCC; font-size: 14px; font-weight: bold;');
+});
+
+// ========================================
+// SERVICE WORKER (PWA - OPCIONAL)
+// ========================================
+
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js').catch(() => {
+        // Service Worker nÃ£o disponÃ­vel
+    });
+}
+
+// ========================================
+// ANALYTICS (Google Analytics - OPCIONAL)
+// ========================================
+
+// Descomente e configure com seu ID do GA
+/*
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'GA_ID');
+*/
+
+// ========================================
+// FEEDBACK DE CLIQUES
+// ========================================
+
+document.querySelectorAll('.btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        // Criar ripple effect
+        const ripple = document.createElement('span');
+        ripple.style.cssText = `
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            transform: scale(0);
+            animation: ripple 0.6s ease-out;
+            pointer-events: none;
+        `;
+        this.style.position = 'relative';
+        this.style.overflow = 'hidden';
+        this.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 600);
+    });
+});
+
+// ========================================
+// FUNCIONALIDADES EXTRAS
+// ========================================
+
+// Copiar telefone
+document.querySelectorAll('.contact-link').forEach(link => {
+    link.addEventListener('click', function(e) {
+        if (this.classList.contains('copy-phone')) {
+            e.preventDefault();
+            const phone = this.textContent;
+            navigator.clipboard.writeText(phone).then(() => {
+                showNotification('Telefone copiado para a área de transferência!', 'success');
+            });
+        }
+    });
+});
+
+// ========================================
+// SUPORTE A TEMAS (FUTURO)
+// ========================================
+
+// Sistema de temas pronto para expansÃ£o
+const theme = {
+    current: 'dark',
+    toggle: function() {
+        this.current = this.current === 'dark' ? 'light' : 'dark';
+        localStorage.setItem('theme', this.current);
+    }
+};
+
+// ========================================
+// MONITORAMENTO DE PERFORMANCE
+// ========================================
+
+if (window.performance && window.performance.timing) {
+    window.addEventListener('load', function() {
+        const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
+        console.log(`%cTempo de carregamento: ${loadTime.toFixed(0)}ms`, 'color: #2A9DCC; font-weight: bold;');
+    });
+}
+
+// ========================================
+// EASTERGG - COMANDO SECRETO
+// ========================================
+
+let keyPresses = [];
+const secretCode = ['x', 'i', 's', 'p', 'i', 'm'];
+
+document.addEventListener('keydown', (e) => {
+    keyPresses.push(e.key.toLowerCase());
+    keyPresses = keyPresses.slice(-secretCode.length);
+    
+    if (keyPresses.join('') === secretCode.join('')) {
+        document.documentElement.style.filter = 'hue-rotate(180deg)';
+        setTimeout(() => {
+            document.documentElement.style.filter = 'hue-rotate(0deg)';
+            showNotification('Você descobriu o modo invertido!', 'success');
+        }, 500);
+        keyPresses = [];
+    }
+});
+
+// ========================================
+// FIM DO SCRIPT
+// ========================================
+

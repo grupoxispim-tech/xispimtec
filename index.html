@@ -3,357 +3,877 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Olicar - Sua Empresa</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta name="description" content="Xispimtec: criação de sites profissionais, landing pages e SEO avançado para empresas em todo o Brasil, com foco em tráfego qualificado e conversão.">
+    <meta name="keywords" content="criação de sites brasil, agência de seo brasil, seo avançado, desenvolvimento web para empresas, landing pages de conversão, criação de sites profissionais, manutenção de sites, tráfego orgânico">
+    <meta name="author" content="Xispimtec">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="bingbot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="theme-color" content="#2DD9D9">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="canonical" href="https://xispimtec.com.br/">
+    <link rel="alternate" href="https://xispimtec.com.br/" hreflang="pt-BR">
+    <link rel="alternate" href="https://xispimtec.com.br/" hreflang="x-default">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="icon" type="image/jpeg" sizes="192x192" href="/imagens/logo.jpg">
+    <link rel="icon" type="image/jpeg" sizes="512x512" href="/imagens/logo.jpg">
+    <link rel="shortcut icon" href="/favicon.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="/imagens/logo.jpg">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Xispimtec | Criação de Sites e SEO Avançado para Todo Brasil">
+    <meta property="og:description" content="Sites profissionais, landing pages e SEO avançado para empresas em todo o Brasil com foco em resultados comerciais.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://xispimtec.com.br/">
+    <meta property="og:site_name" content="Xispimtec">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:image" content="https://xispimtec.com.br/imagens/logo.jpg">
+    <meta property="og:image:alt" content="Logo da Xispimtec">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Xispimtec | Sites e SEO Avançado para Empresas no Brasil">
+    <meta name="twitter:description" content="Projetos web de alta performance e SEO técnico para posicionar empresas em todo o Brasil.">
+    <meta name="twitter:image" content="https://xispimtec.com.br/imagens/logo.jpg">
+
+    <title>Xispimtec | Criação de Sites e SEO Avançado para Empresas em Todo Brasil</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome para ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Xispimtec",
+            "url": "https://xispimtec.com.br/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://xispimtec.com.br/imagens/logo.jpg",
+                "width": 1080,
+                "height": 1080
+            },
+            "image": "https://xispimtec.com.br/imagens/logo.jpg",
+            "email": "grupoxispim@gmail.com",
+            "telephone": "+55-47-99250-5922",
+            "sameAs": [
+                "https://www.instagram.com/xispimtec"
+            ],
+            "areaServed": {
+                "@type": "Country",
+                "name": "Brasil"
+            }
+        }
+    </script>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "ProfessionalService",
+            "name": "Xispimtec",
+            "image": "https://xispimtec.com.br/imagens/logo.jpg",
+            "url": "https://xispimtec.com.br/",
+            "telephone": "+55-47-99250-5922",
+            "email": "grupoxispim@gmail.com",
+            "priceRange": "$$",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Navegantes",
+                "addressRegion": "SC",
+                "addressCountry": "BR"
+            },
+            "areaServed": {
+                "@type": "Country",
+                "name": "Brasil"
+            },
+            "serviceType": [
+                "Criação de Sites Profissionais",
+                "Landing Pages",
+                "SEO Técnico",
+                "Manutenção de Sites"
+            ],
+            "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": "Serviços Digitais Xispimtec",
+                "itemListElement": [
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Service",
+                            "name": "Criação de Sites para Empresas"
+                        }
+                    },
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Service",
+                            "name": "SEO Avançado para Todo Brasil"
+                        }
+                    },
+                    {
+                        "@type": "Offer",
+                        "itemOffered": {
+                            "@type": "Service",
+                            "name": "Landing Pages de Conversão"
+                        }
+                    }
+                ]
+            }
+        }
+    </script>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "Xispimtec",
+            "url": "https://xispimtec.com.br/",
+            "inLanguage": "pt-BR"
+        }
+    </script>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "Quanto custa criar um site profissional?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "O valor varia conforme escopo, páginas, integrações e estratégia de SEO. A Xispimtec monta proposta personalizada para cada negócio."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Em quanto tempo meu site fica pronto?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Projetos institucionais normalmente ficam prontos entre 7 e 21 dias, dependendo do conteúdo e da complexidade técnica."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "A Xispimtec faz SEO para aparecer no Google?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Sim. Trabalhamos SEO técnico, performance, estrutura semântica, conteúdo e otimizações para aumentar visibilidade orgânica."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Vocês atendem somente Navegantes-SC?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Não. A empresa está em Navegantes-SC, mas o atendimento é online para todo o Brasil."
+                    }
+                },
+                {
+                    "@type": "Question",
+                    "name": "Meu site vai funcionar bem no celular?",
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": "Sim. Todos os projetos são responsivos e otimizados para mobile, tablet e desktop."
+                    }
+                }
+            ]
+        }
+    </script>
 </head>
 <body>
-    <!-- NAVEGAÇÃO -->
+    <!-- Menu Fixo -->
     <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <img src="imagens/logo.jpg" alt="Logo Olicar" class="nav-logo-img">
-                <span>OLICAR</span>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#servicos" class="nav-link">Serviços</a></li>
-                <li><a href="#galeria" class="nav-link">Galeria</a></li>
-                <li><a href="#avaliacoes" class="nav-link">Avaliações</a></li>
-                <li><a href="#sobre" class="nav-link">Sobre</a></li>
-                <li><a href="#contato" class="nav-link">Contato</a></li>
-            </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+        <div class="container">
+            <div class="navbar-content">
+                <div class="logo">
+                    <img src="imagens/logo.jpg" alt="Xispimtec Logo" class="logo-img">
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#hero">Início</a></li>
+                    <li><a href="#about">Sobre</a></li>
+                    <li><a href="#services">Serviços</a></li>
+                    <li><a href="#portfolio">Portfólio</a></li>
+                    <li><a href="#testimonials">Avaliações</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contact" class="btn-contact">Contato</a></li>
+                </ul>
+                <div class="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </div>
     </nav>
 
-    <!-- SEÇÃO HERO -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Bem-vindo à Olicar</h1>
-            <p>Qualidade e profissionalismo em primeiro lugar</p>
-            <button class="cta-button" onclick="document.getElementById('galeria').scrollIntoView({behavior: 'smooth'})">
-                Conheça Nossos Serviços
-            </button>
+    <!-- Botão Flutuante WhatsApp -->
+    <a href="https://wa.me/5547992505922?text=Olá%20Xispimtec!%20Gostaria%20de%20saber%20mais%20sobre%20seus%20serviços" 
+       class="whatsapp-float" target="_blank" rel="noopener noreferrer" title="Fale conosco no WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- HERO -->
+    <section id="hero" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        Seu site profissional que gera <span class="highlight">clientes todos os dias</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Na Xispimtec, transformamos sua visão em realidade digital. Criamos sites e soluções que não apenas impressionam, mas que geram resultados reais para seu negócio.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="https://wa.me/5547992505922?text=Olá%20Xispimtec!%20Gostaria%20de%20solicitar%20um%20orçamento" 
+                           class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-whatsapp"></i> Solicitar Orçamento
+                        </a>
+                        <a href="#portfolio" class="btn btn-secondary">
+                            Ver Projetos <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-illustration">
+                    <div class="tech-illustration">
+                        <div class="hex hex-1"></div>
+                        <div class="hex hex-2"></div>
+                        <div class="hex hex-3"></div>
+                        <div class="code-line line-1"></div>
+                        <div class="code-line line-2"></div>
+                        <div class="code-line line-3"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- SEÇÃO SERVIÇOS -->
-    <section id="servicos" class="servicos">
+    <!-- SOBRE -->
+    <section id="about" class="about">
         <div class="container">
-            <h2>Nossos Serviços</h2>
-            <p class="servicos-subtitulo">Tudo que seu veículo precisa em um só lugar</p>
-            <div class="servicos-grid">
-                <div class="servico-card">
-                    <div class="servico-icon">
-                        <i class="fas fa-oil-can"></i>
+            <h2 class="section-title">Sobre a <span class="highlight">Xispimtec</span></h2>
+            <p class="section-subtitle">Somos uma equipe de especialistas em desenvolvimento web comprometida com seu sucesso</p>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="about-description">
+                        A <strong>Xispimtec</strong> foi fundada com uma missão clara: ajudar pequenas e médias empresas a crescerem através de soluções digitais de qualidade. Acreditamos que toda empresa merece ter uma presença online profissional e eficaz.
+                    </p>
+                    
+                    <div class="about-mission">
+                        <h3><i class="fas fa-target"></i> Nossa Missão</h3>
+                        <p>Fornecer soluções digitais inovadoras que transformem visitantes em clientes, combinando design excepcional com estratégia de negócio.</p>
                     </div>
-                    <h3>Troca de Óleo</h3>
-                    <p>Troca de óleo e filtros com produtos de qualidade para manter o motor do seu veículo sempre protegido.</p>
-                </div>
-                <div class="servico-card">
-                    <div class="servico-icon">
-                        <i class="fas fa-car"></i>
+
+                    <div class="about-differentials">
+                        <h3><i class="fas fa-star"></i> Nosso Diferencial</h3>
+                        <ul>
+                            <li>✓ <strong>Atendimento Próximo:</strong> Você trabalha com especialistas, não com máquinas</li>
+                            <li>✓ <strong>Soluções Personalizadas:</strong> Cada projeto é único, como seu negócio</li>
+                            <li>✓ <strong>Foco em Resultados:</strong> Nossa meta é gerar leads e converter em vendas</li>
+                            <li>✓ <strong>Suporte Contínuo:</strong> Estamos aqui para você, sempre</li>
+                        </ul>
                     </div>
-                    <h3>Geometria</h3>
-                    <p>Alinhamento e geometria precisos para garantir segurança, estabilidade e maior durabilidade dos pneus.</p>
                 </div>
-                <div class="servico-card">
-                    <div class="servico-icon">
-                        <i class="fas fa-circle-notch"></i>
+                <div class="about-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">150+</div>
+                        <div class="stat-label">Projetos Entregues</div>
                     </div>
-                    <h3>Balanceamento</h3>
-                    <p>Balanceamento de rodas para eliminar vibrações e proporcionar mais conforto e segurança na direção.</p>
+                    <div class="stat-card">
+                        <div class="stat-number">98%</div>
+                        <div class="stat-label">Clientes Satisfeitos</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">12+</div>
+                        <div class="stat-label">Anos de Experiência</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Suporte Disponível</div>
+                    </div>
                 </div>
-                <div class="servico-card">
-                    <div class="servico-icon">
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVIÇOS -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Nossos <span class="highlight">Serviços</span></h2>
+            <p class="section-subtitle">Soluções completas para sua presença digital</p>
+            
+            <div class="services-grid">
+                <!-- Serviço 1 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Criação de Sites Profissionais</h3>
+                    <p class="service-description">
+                        Sites modernos, responsivos e otimizados que refletem a qualidade do seu negócio.
+                    </p>
+                    <div class="service-benefits">
+                        <p><strong>Benefícios:</strong></p>
+                        <ul>
+                            <li>Design único e personalizado</li>
+                            <li>Carregamento ultra-rápido</li>
+                            <li>Compatível com todos os dispositivos</li>
+                            <li>Fácil de gerenciar</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Serviço 2 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Landing Pages Conversoras</h3>
+                    <p class="service-description">
+                        Páginas estratégicas que convertem visitantes em leads e clientes.
+                    </p>
+                    <div class="service-benefits">
+                        <p><strong>Benefícios:</strong></p>
+                        <ul>
+                            <li>Aumento de conversões</li>
+                            <li>Estratégia focada em resultados</li>
+                            <li>Testes A/B integrados</li>
+                            <li>Integração com ferramentas</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Serviço 3 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Manutenção e Suporte</h3>
+                    <p class="service-description">
+                        Suporte completo para manter seu site seguro, atualizado e performático.
+                    </p>
+                    <div class="service-benefits">
+                        <p><strong>Benefícios:</strong></p>
+                        <ul>
+                            <li>Atualizações mensais</li>
+                            <li>Segurança garantida</li>
+                            <li>Backups automáticos</li>
+                            <li>Suporte prioritário</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Serviço 4 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Otimização para Google (SEO)</h3>
+                    <p class="service-description">
+                        Apareça nos primeiros resultados do Google e atraia mais clientes orgânicos.
+                    </p>
+                    <div class="service-benefits">
+                        <p><strong>Benefícios:</strong></p>
+                        <ul>
+                            <li>Tráfego orgânico qualificado</li>
+                            <li>Melhor posicionamento</li>
+                            <li>Otimização técnica completa</li>
+                            <li>Relatórios mensais</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Serviço 5 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Design Responsivo</h3>
+                    <p class="service-description">
+                        Seu site perfeito em celular, tablet, desktop e em qualquer dispositivo.
+                    </p>
+                    <div class="service-benefits">
+                        <p><strong>Benefícios:</strong></p>
+                        <ul>
+                            <li>Experiência perfeita em mobile</li>
+                            <li>Melhor ranking no Google</li>
+                            <li>Mais conversões</li>
+                            <li>Antecipação de tendências</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Serviço 6 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Integração e Automação</h3>
+                    <p class="service-description">
+                        Conecte seu site com ferramentas que automatizam seu negócio.
+                    </p>
+                    <div class="service-benefits">
+                        <p><strong>Benefícios:</strong></p>
+                        <ul>
+                            <li>Whatsapp integrado</li>
+                            <li>Formulários automáticos</li>
+                            <li>CRM interligado</li>
+                            <li>Gestão simplificada</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DIFERENCIAIS -->
+    <section class="differentials">
+        <div class="container">
+            <h2 class="section-title">Por Que Escolher <span class="highlight">Xispimtec</span></h2>
+            <p class="section-subtitle">Qualidade, eficiência e resultado garantido</p>
+            
+            <div class="differentials-grid">
+                <div class="differential-item">
+                    <div class="differential-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Sites Rápidos</h3>
+                    <p>Velocidade de carregamento otimizada para melhor experiência e SEO</p>
+                </div>
+
+                <div class="differential-item">
+                    <div class="differential-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>100% Responsivo</h3>
+                    <p>Funciona perfeitamente em smartphones, tablets e desktops</p>
+                </div>
+
+                <div class="differential-item">
+                    <div class="differential-icon">
+                        <i class="fas fa-whatsapp"></i>
+                    </div>
+                    <h3>Integração WhatsApp</h3>
+                    <p>Clientes entram em contato direto pelo WhatsApp</p>
+                </div>
+
+                <div class="differential-item">
+                    <div class="differential-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Design Profissional</h3>
+                    <p>Visual moderno e alinhado com sua marca</p>
+                </div>
+
+                <div class="differential-item">
+                    <div class="differential-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Suporte 24/7</h3>
+                    <p>Estamos sempre disponíveis para ajudar seu negócio</p>
+                </div>
+
+                <div class="differential-item">
+                    <div class="differential-icon">
                         <i class="fas fa-shield-alt"></i>
                     </div>
-                    <h3>Cambagem</h3>
-                    <p>Regulagem de cambagem para melhorar a performance, contato com o solo e desgaste uniforme dos pneus.</p>
-                </div>
-                <div class="servico-card">
-                    <div class="servico-icon">
-                        <i class="fas fa-wrench"></i>
-                    </div>
-                    <h3>Manutenção Geral</h3>
-                    <p>Revisão completa e manutenção preventiva e corretiva para manter seu veículo sempre em dia.</p>
+                    <h3>Segurança Garantida</h3>
+                    <p>Certificados SSL e proteção contra ataques</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SEÇÃO SOBRE -->
-    <section id="sobre" class="sobre">
+    <!-- PORTFÓLIO -->
+    <section id="portfolio" class="portfolio">
         <div class="container">
-            <h2>Sobre a Olicar</h2>
-            <div class="sobre-content">
-                <div class="sobre-texto">
-                    <p><strong>Adicione sua informação pessoal/empresarial aqui</strong></p>
-                    <ul>
-                        <li>✓ Experiência comprovada</li>
-                        <li>✓ Melhor atendimento</li>
-                        <li>✓ Qualidade garantida</li>
-                        <li>✓ Preços competitivos</li>
-                    </ul>
+            <h2 class="section-title">Nosso <span class="highlight">Portfólio</span></h2>
+            <p class="section-subtitle">Veja alguns dos projetos que transformamos em sucesso</p>
+            
+            <div class="portfolio-grid">
+                <!-- Projeto 1 -->
+                <div class="portfolio-item portfolio-item-clickable">
+                    <div class="portfolio-image">
+                        <div class="portfolio-placeholder project-1">
+                            <img class="portfolio-logo" src="imagens/autoben-logo.jpg" alt="Logo Autoben" loading="lazy" decoding="async">
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Autoben</h3>
+                        <p class="portfolio-category">Site Institucional</p>
+                        <p class="portfolio-description">
+                            Projeto publicado em autoben.com.br.
+                        </p>
+                        <div class="portfolio-tags">
+                            <span>#Autoben</span>
+                            <span>#SEO</span>
+                            <span>#Site Institucional</span>
+                        </div>
+                    </div>
+                    <a class="portfolio-item-link" href="https://autoben.com.br" target="_blank" rel="noopener noreferrer" aria-label="Abrir site autoben.com.br">Abrir projeto</a>
                 </div>
-                <div class="sobre-info">
-                    <div class="info-card">
+
+                <!-- Projeto 2 -->
+                <div class="portfolio-item portfolio-item-clickable">
+                    <div class="portfolio-image">
+                        <div class="portfolio-placeholder project-2">
+                            <img class="portfolio-logo" src="imagens/barbearia-lh-logo.jpg" alt="Logo Barbearia LH" loading="lazy" decoding="async">
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Barbearia LH</h3>
+                        <p class="portfolio-category">Site Institucional</p>
+                        <p class="portfolio-description">
+                            Projeto publicado em barbearialh.com.br.
+                        </p>
+                        <div class="portfolio-tags">
+                            <span>#BarbeariaLH</span>
+                            <span>#SiteInstitucional</span>
+                            <span>#Branding</span>
+                        </div>
+                    </div>
+                    <a class="portfolio-item-link" href="https://barbearialh.com.br/" target="_blank" rel="noopener noreferrer" aria-label="Abrir site barbearialh.com.br">Abrir projeto</a>
+                </div>
+
+                <!-- Projeto 3 -->
+                <div class="portfolio-item portfolio-item-clickable">
+                    <div class="portfolio-image">
+                        <div class="portfolio-placeholder project-3">
+                            <img class="portfolio-logo" src="imagens/olicar-logo.jpg" alt="Logo Olicar Auto Mecânica" loading="lazy" decoding="async">
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Olicar Auto Mecânica</h3>
+                        <p class="portfolio-category">Site Institucional</p>
+                        <p class="portfolio-description">
+                            Projeto publicado em olicarautomecanica.com.br.
+                        </p>
+                        <div class="portfolio-tags">
+                            <span>#OlicarAutoMecanica</span>
+                            <span>#SiteInstitucional</span>
+                            <span>#Automotivo</span>
+                        </div>
+                    </div>
+                    <a class="portfolio-item-link" href="https://olicarautomecanica.com.br/" target="_blank" rel="noopener noreferrer" aria-label="Abrir site olicarautomecanica.com.br">Abrir projeto</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- DEPOIMENTOS -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Área de <span class="highlight">Avaliação</span></h2>
+            <p class="section-subtitle">Veja como nossos clientes avaliam e deixe sua opinião</p>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <h3 class="rating-card-title">Avaliação Média dos Clientes</h3>
+                    <div class="rating-score-wrap">
+                        <strong class="rating-score" id="ratingAverage">-</strong>
+                        <span class="rating-score-total">de 5.0</span>
+                    </div>
+                    <div class="stars rating-static" aria-label="Média de 4.9 estrelas">
                         <i class="fas fa-star"></i>
-                        <h3>Excelência</h3>
-                        <p>Compromisso com a qualidade</p>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
                     </div>
-                    <div class="info-card">
-                        <i class="fas fa-handshake"></i>
-                        <h3>Confiança</h3>
-                        <p>Relacionamento duradouro</p>
-                    </div>
+                    <ul class="rating-summary-list">
+                        <li><span>5 estrelas</span><strong id="ratingPct5">0%</strong></li>
+                        <li><span>4 estrelas</span><strong id="ratingPct4">0%</strong></li>
+                        <li><span>3 estrelas</span><strong id="ratingPct3">0%</strong></li>
+                        <li><span>2 ou menos</span><strong id="ratingPct2">0%</strong></li>
+                    </ul>
+                    <p class="rating-note" id="ratingTotalCount">Baseado em 0 avaliações verificadas.</p>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- GALERIA -->
-    <section id="galeria" class="galeria">
-        <div class="container">
-            <h2>Galeria de Fotos</h2>
-            <div class="galeria-grid">
-                <div class="galeria-item">
-                    <img src="imagens/1.jpg" alt="Foto 1">
-                    <div class="galeria-overlay">
-                        <h3>Foto 1</h3>
-                    </div>
-                </div>
-                <div class="galeria-item">
-                    <img src="imagens/2.jpg" alt="Foto 2">
-                    <div class="galeria-overlay">
-                        <h3>Foto 2</h3>
-                    </div>
-                </div>
-                <div class="galeria-item">
-                    <img src="imagens/3.jpg" alt="Foto 3">
-                    <div class="galeria-overlay">
-                        <h3>Foto 3</h3>
-                    </div>
-                </div>
-                <div class="galeria-item">
-                    <img src="imagens/4.jpg" alt="Foto 4">
-                    <div class="galeria-overlay">
-                        <h3>Foto 4</h3>
-                    </div>
-                </div>
-                <div class="galeria-item">
-                    <img src="imagens/5.jpg" alt="Foto 5">
-                    <div class="galeria-overlay">
-                        <h3>Foto 5</h3>
-                    </div>
-                </div>
-                <div class="galeria-item">
-                    <img src="imagens/6.jpg" alt="Foto 6">
-                    <div class="galeria-overlay">
-                        <h3>Foto 6</h3>
-                    </div>
-                </div>
-                <div class="galeria-item">
-                    <img src="imagens/trabalho1.jpg" alt="Trabalho 1">
-                    <div class="galeria-overlay">
-                        <h3>Trabalho 1</h3>
-                    </div>
-                </div>
-                <div class="galeria-item">
-                    <img src="imagens/trabalho2.jpg" alt="Trabalho 2">
-                    <div class="galeria-overlay">
-                        <h3>Trabalho 2</h3>
-                    </div>
-                </div>
-                <div class="galeria-item">
-                    <img src="imagens/trabalho3.jpg" alt="Trabalho 3">
-                    <div class="galeria-overlay">
-                        <h3>Trabalho 3</h3>
-                    </div>
-                </div>
-                <div class="galeria-item">
-                    <img src="imagens/trabalho4.jpg" alt="Trabalho 4">
-                    <div class="galeria-overlay">
-                        <h3>Trabalho 4</h3>
-                    </div>
-                </div>
-                <div class="galeria-item">
-                    <img src="imagens/trabalho5.jpg" alt="Trabalho 5">
-                    <div class="galeria-overlay">
-                        <h3>Trabalho 5</h3>
-                    </div>
-                </div>
-                <div class="galeria-item">
-                    <img src="imagens/escritorio.jpg" alt="Escritorio">
-                    <div class="galeria-overlay">
-                        <h3>Escritorio</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                <div class="testimonial-card">
+                    <h3 class="rating-card-title">Deixe Sua Avaliação</h3>
+                    <form id="reviewForm" class="review-form">
+                        <label for="reviewName">Seu nome</label>
+                        <input type="text" id="reviewName" name="reviewName" placeholder="Digite seu nome" required>
 
-    <!-- AVALIAÇÕES -->
-    <section id="avaliacoes" class="avaliacoes">
-        <div class="container">
-            <h2>Avaliações com Foto e Vídeo</h2>
-            <div class="avaliacoes-content">
-                <form id="avaliacao-form" class="avaliacao-form" action="#" method="post" enctype="multipart/form-data">
-                    <label for="avaliacao-nome">Seu nome</label>
-                    <input type="text" id="avaliacao-nome" name="nome" placeholder="Ex.: João da Silva" required>
-
-                    <label for="avaliacao-nota">Nota</label>
-                    <select id="avaliacao-nota" name="nota" required>
-                        <option value="" disabled selected>Selecione uma nota</option>
-                        <option value="5">5 - Excelente</option>
-                        <option value="4">4 - Muito bom</option>
-                        <option value="3">3 - Bom</option>
-                        <option value="2">2 - Regular</option>
-                        <option value="1">1 - Precisa melhorar</option>
-                    </select>
-
-                    <label for="avaliacao-comentario">Comentário</label>
-                    <textarea id="avaliacao-comentario" name="comentario" rows="4" placeholder="Conte como foi sua experiência" required></textarea>
-
-                    <label for="avaliacao-foto">Foto da avaliação</label>
-                    <input type="file" id="avaliacao-foto" name="foto" accept="image/*">
-
-                    <label for="avaliacao-video">Vídeo da avaliação</label>
-                    <input type="file" id="avaliacao-video" name="video" accept="video/*">
-
-                    <button type="submit" class="avaliacao-btn">Enviar avaliação</button>
-                    <p id="avaliacao-status" class="avaliacao-status" aria-live="polite"></p>
-                </form>
-
-                <div class="midia-preview">
-                    <div class="preview-card">
-                        <h3>Prévia da foto</h3>
-                        <img id="preview-foto" alt="Prévia da foto enviada" class="preview-hidden">
-                        <p id="preview-foto-placeholder">Nenhuma foto selecionada.</p>
-                    </div>
-                    <div class="preview-card">
-                        <h3>Prévia do vídeo</h3>
-                        <video id="preview-video" controls class="preview-hidden"></video>
-                        <p id="preview-video-placeholder">Nenhum vídeo selecionado.</p>
-                    </div>
-                    <p class="avaliacao-aviso">As avaliações enviadas aparecem abaixo e ficam salvas na nuvem.</p>
-                </div>
-            </div>
-
-            <div class="avaliacoes-publicadas">
-                <h3>Quem já avaliou</h3>
-                <div id="avaliacoes-lista" class="avaliacoes-lista"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SEÇÃO DE CONTATO -->
-    <section id="contato" class="contato">
-        <div class="container">
-            <h2>Conecte-se Conosco</h2>
-            <div class="contato-content">
-                <div class="contato-info">
-                    <h3>Informações de Contato</h3>
-                    <div class="info-item">
-                        <i class="fas fa-phone-volume" aria-hidden="true"></i>
-                        <div>
-                            <strong>Telefone:</strong>
-                            <p><a href="tel:+5547997867018">(47) 99786-7018</a></p>
+                        <label>Sua nota</label>
+                        <div class="stars interactive-stars" role="radiogroup" aria-label="Selecione uma nota de 1 a 5">
+                            <button type="button" class="rating-star" data-rating="1" aria-label="1 estrela"><i class="far fa-star"></i></button>
+                            <button type="button" class="rating-star" data-rating="2" aria-label="2 estrelas"><i class="far fa-star"></i></button>
+                            <button type="button" class="rating-star" data-rating="3" aria-label="3 estrelas"><i class="far fa-star"></i></button>
+                            <button type="button" class="rating-star" data-rating="4" aria-label="4 estrelas"><i class="far fa-star"></i></button>
+                            <button type="button" class="rating-star" data-rating="5" aria-label="5 estrelas"><i class="far fa-star"></i></button>
                         </div>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-envelope-open-text" aria-hidden="true"></i>
-                        <div>
-                            <strong>Email:</strong>
-                            <p><a href="https://outlook.live.com/mail/0/deeplink/compose?to=olicarautomecanica@hotmail.com" target="_blank" rel="noopener noreferrer">olicarautomecanica@hotmail.com</a></p>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-location-dot" aria-hidden="true"></i>
-                        <div>
-                            <strong>Endereço:</strong>
-                            <p><a href="https://www.google.com/maps/dir/?api=1&destination=Manoel+Estevao+Couto+354%2C+Navegantes%2C+SC%2C+Brazil%2C+88370555" target="_blank" rel="noopener noreferrer">Manoel Estêvão Couto 354, Navegantes, SC, Brazil, 88370555</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="redes-sociais">
-                    <h3>Redes Sociais</h3>
-                    <div class="social-links">
-                        <a href="https://www.instagram.com/olicar_automecanica/" target="_blank" class="social-btn instagram">
-                            <i class="fab fa-instagram"></i> Instagram
-                        </a>
-                        <a href="https://www.facebook.com/share/18Vb3DuuFG/" target="_blank" class="social-btn facebook">
-                            <i class="fab fa-facebook"></i> Facebook
-                        </a>
-                        <a href="https://wa.me/5547997867018?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Olicar%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" class="social-btn whatsapp">
-                            <i class="fab fa-whatsapp"></i> WhatsApp
-                        </a>
-                        <a href="tel:+5547997867018" class="social-btn telefone" aria-label="Ligar para (47) 99786-7018" title="Ligar agora">
-                            <i class="fas fa-phone"></i> Telefonar
-                        </a>
+                        <input type="hidden" id="reviewRating" name="reviewRating" value="0">
+
+                        <label for="reviewComment">Seu comentário</label>
+                        <textarea id="reviewComment" name="reviewComment" rows="4" placeholder="Conte como foi sua experiência" required></textarea>
+
+                        <button type="submit" class="btn btn-primary review-submit-btn">Enviar avaliação</button>
+                    </form>
+
+                    <div class="reviews-public">
+                        <h4>Comentários Publicados</h4>
+                        <p id="reviewsStatus" class="reviews-status">Carregando comentários...</p>
+                        <div id="reviewsList" class="reviews-list" aria-live="polite"></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- PÁGINAS SEO -->
+    <section class="seo-hub" id="seo-hub">
+        <div class="container">
+            <h2 class="section-title">Soluções para <span class="highlight">Quem Quer Aparecer no Google</span></h2>
+            <p class="section-subtitle">Conteúdo aprofundado para buscas comerciais e locais</p>
+
+            <div class="seo-hub-grid">
+                <a class="seo-hub-card" href="/criacao-de-sites-navegantes.html">
+                    <h3>Criação de Sites em Navegantes-SC</h3>
+                    <p>Página otimizada para intenção local e comercial de quem busca desenvolvimento web na região.</p>
+                </a>
+
+                <a class="seo-hub-card" href="/seo-para-empresas.html">
+                    <h3>SEO para Empresas</h3>
+                    <p>Guia de otimização para posicionar sua empresa no Google com estratégia técnica e conteúdo.</p>
+                </a>
+
+                <a class="seo-hub-card" href="/landing-pages-conversao.html">
+                    <h3>Landing Pages de Conversão</h3>
+                    <p>Página dedicada para captação de leads com foco em performance, oferta e conversão.</p>
+                </a>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <h2 class="section-title">Perguntas <span class="highlight">Frequentes</span></h2>
+            <p class="section-subtitle">Respostas diretas sobre criação de sites, SEO e presença digital</p>
+
+            <p class="faq-intro">
+                Se você está buscando <strong>criação de sites profissionais</strong>, <strong>site para empresa</strong> ou
+                <strong>SEO para aparecer no Google</strong>, aqui estão as dúvidas mais comuns dos nossos clientes.
+            </p>
+
+            <div class="faq-list">
+                <details class="faq-item" open>
+                    <summary>Quanto custa criar um site profissional?</summary>
+                    <p>O valor depende do objetivo do projeto, número de páginas, integrações e nível de SEO. Fazemos orçamento personalizado para cada empresa.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Em quanto tempo meu site fica pronto?</summary>
+                    <p>Sites institucionais costumam ficar prontos entre 7 e 21 dias. Projetos maiores podem levar mais tempo por conta de integrações e conteúdos extras.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Vocês fazem SEO para o site aparecer no Google?</summary>
+                    <p>Sim. Aplicamos SEO técnico, estrutura de conteúdo, otimização de performance e melhorias contínuas para ampliar o alcance orgânico.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Vocês atendem somente Navegantes-SC?</summary>
+                    <p>A base é em Navegantes-SC, com atendimento online, reuniões e suporte remoto para diferentes tipos de projeto.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>O site vai funcionar bem no celular?</summary>
+                    <p>Sim. Todos os projetos são responsivos e otimizados para celulares, tablets e desktops, com foco em boa experiência e conversão.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="cta-final">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Pronto para Transformar Seu Negócio?</h2>
+                <p>
+                    Não deixe seus concorrentes crescerem enquanto você fica para trás. 
+                    Sua presença digital é essencial para o sucesso nos dias de hoje.
+                </p>
+                <p class="cta-highlight">
+                    <strong>Solicite um diagnóstico gratuito do seu site!</strong>
+                </p>
+                <a href="https://wa.me/5547992505922?text=Ol%C3%A1%20Xispimtec!%20Gostaria%20de%20solicitar%20um%20diagn%C3%B3stico%20gratuito%20do%20meu%20site" 
+                   class="btn btn-cta" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-whatsapp"></i> Conversar Agora no WhatsApp
+                </a>
+                <p class="cta-footer">Resposta em até 1 hora • Sem compromisso</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Entre em <span class="highlight">Contato</span></h2>
+            <p class="section-subtitle">Estamos prontos para ajudar seu negócio a crescer</p>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-card whatsapp-card">
+                        <div class="contact-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <h3>WhatsApp</h3>
+                        <p>Envie uma mensagem direto via WhatsApp</p>
+                        <a href="https://wa.me/5547992505922" target="_blank" rel="noopener noreferrer" class="contact-link">
+                            (47) 9 9250-5922
+                        </a>
+                    </div>
+
+                    <div class="contact-card email-card">
+                        <div class="contact-icon">
+                            <img src="imagens/gmail-oficial.png" alt="Gmail" class="email-official-icon">
+                        </div>
+                        <h3>E-mail</h3>
+                        <p>Ou envie um e-mail para nossa equipe</p>
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=grupoxispim@gmail.com" target="_blank" rel="noopener noreferrer" class="contact-link">
+                            grupoxispim@gmail.com
+                        </a>
+                    </div>
+
+                    <div class="contact-card location-card">
+                        <div class="contact-icon">
+                            <img src="imagens/google-maps-oficial.png" alt="Google Maps" class="maps-official-icon">
+                        </div>
+                        <h3>Localização</h3>
+                        <p>Atendimento 100% online</p>
+                        <a href="https://www.google.com/maps/place/Navegantes,+SC" target="_blank" rel="noopener noreferrer" class="location">
+                            Navegantes - SC
+                        </a>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Seu Nome *</label>
+                            <input type="text" id="name" name="name" placeholder="Digite seu nome completo" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Seu Telefone *</label>
+                            <input type="tel" id="phone" name="phone" placeholder="(47) 9 9250-5922" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Seu E-mail</label>
+                            <input type="email" id="email" name="email" placeholder="seu@email.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Sua Mensagem *</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Descreva seu projeto ou dúvida" required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">
+                            Enviar Mensagem <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RODAPÉ -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h4>OLICAR</h4>
-                    <p>Seu parceiro de confiança</p>
+                    <h3>Xispimtec</h3>
+                    <p>Transformando negócios através da tecnologia e inovação digital.</p>
+                    <div class="social-links">
+                        <a href="#" title="Facebook" class="social-facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/xispimtec?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" title="Instagram" class="social-instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/5547992505922" title="WhatsApp" class="social-whatsapp" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+                    </div>
                 </div>
+
                 <div class="footer-section">
                     <h4>Links Rápidos</h4>
                     <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#galeria">Galeria</a></li>
-                        <li><a href="#avaliacoes">Avaliações</a></li>
-                        <li><a href="#sobre">Sobre</a></li>
-                        <li><a href="#contato">Contato</a></li>
+                        <li><a href="#hero">Início</a></li>
+                        <li><a href="#about">Sobre</a></li>
+                        <li><a href="#services">Serviços</a></li>
+                        <li><a href="#portfolio">Portfólio</a></li>
+                        <li><a href="/criacao-de-sites-navegantes.html">Sites em Navegantes-SC</a></li>
+                        <li><a href="/seo-para-empresas.html">SEO para Empresas</a></li>
+                        <li><a href="/landing-pages-conversao.html">Landing Pages</a></li>
+                        <li><a href="#faq">FAQ</a></li>
                     </ul>
                 </div>
+
                 <div class="footer-section">
-                    <h4>Criador do Site</h4>
-                    <p>Este site foi criado por Xispimtec, com foco em presença digital profissional.</p>
-                    <a
-                        href="https://xispimtec.com.br"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="creator-link"
-                        aria-label="Acessar o site da Xispimtec"
-                    >
-                        Visitar xispimtec.com.br
-                    </a>
+                    <h4>Suporte</h4>
+                    <ul>
+                        <li><a href="#">Contato</a></li>
+                        <li><a href="#" class="privacy-link">Política de Privacidade</a></li>
+                        <li><a href="#">Termos de Serviço</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Informações</h4>
+                    <p><strong>Email:</strong> grupoxispim@gmail.com</p>
+                    <p><strong>WhatsApp:</strong> (47) 9 9250-5922</p>
+                    <p><strong>Atendimento:</strong> Segunda a Sexta, 09h-18h</p>
                 </div>
             </div>
+
             <div class="footer-bottom">
-                <p>&copy; 2026 OLICAR. Todos os direitos reservados.</p>
+                <p>&copy; 2026 <strong>Xispimtec</strong>. Todos os direitos reservados. | Desenvolvido com <i class="fas fa-heart"></i> para impulsionar seu negócio</p>
             </div>
         </div>
     </footer>
 
-    <a
-        href="https://wa.me/5547997867018?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Olicar%20e%20gostaria%20de%20um%20or%C3%A7amento."
-        class="whatsapp-float"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Conversar no WhatsApp"
-        title="Fale com a Olicar no WhatsApp"
-    >
-        <i class="fab fa-whatsapp" aria-hidden="true"></i>
-    </a>
+    <!-- Modal Política de Privacidade -->
+    <div id="privacyModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>Política de Privacidade</h2>
+            <div class="modal-body">
+                <h3>1. Coleta de Dados</h3>
+                <p>Coletamos informações pessoais apenas quando você voluntariamente as fornece através do formulário de contato.</p>
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="supabase-config.js"></script>
+                <h3>2. Uso de Dados</h3>
+                <p>Os dados coletados são usados exclusivamente para entrar em contato com você sobre seu projeto.</p>
+
+                <h3>3. Proteção de Dados</h3>
+                <p>Seus dados são criptografados e mantidos em segurança máxima.</p>
+
+                <h3>4. Cookies</h3>
+                <p>Este site não utiliza cookies de rastreamento. Apenas cookies necessários para funcionamento.</p>
+
+                <h3>5. Direitos do Usuário</h3>
+                <p>Você pode solicitar acesso, correção ou exclusão de seus dados a qualquer momento.</p>
+
+                <h3>6. Contato</h3>
+                <p>Para dúvidas sobre privacidade, contate: grupoxispim@gmail.com</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.REVIEWS_DB_CONFIG = {
+            supabaseUrl: 'https://rpbiprpqyimydrvchyyn.supabase.co',
+            supabaseAnonKey: 'sb_publishable_RjNWIEWIbQiitc__C7HKBw_DXyTvTEN'
+        };
+    </script>
     <script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,360 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olicar - Sua Empresa</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- NAVEGAÇÃO -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="imagens/logo.jpg" alt="Logo Olicar" class="nav-logo-img">
+                <span>OLICAR</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#servicos" class="nav-link">Serviços</a></li>
+                <li><a href="#galeria" class="nav-link">Galeria</a></li>
+                <li><a href="#avaliacoes" class="nav-link">Avaliações</a></li>
+                <li><a href="#sobre" class="nav-link">Sobre</a></li>
+                <li><a href="#contato" class="nav-link">Contato</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SEÇÃO HERO -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Bem-vindo à Olicar</h1>
+            <p>Qualidade e profissionalismo em primeiro lugar</p>
+            <button class="cta-button" onclick="document.getElementById('galeria').scrollIntoView({behavior: 'smooth'})">
+                Conheça Nossos Serviços
+            </button>
+        </div>
+    </section>
+
+    <!-- SEÇÃO SERVIÇOS -->
+    <section id="servicos" class="servicos">
+        <div class="container">
+            <h2>Nossos Serviços</h2>
+            <p class="servicos-subtitulo">Tudo que seu veículo precisa em um só lugar</p>
+            <div class="servicos-grid">
+                <div class="servico-card">
+                    <div class="servico-icon">
+                        <i class="fas fa-oil-can"></i>
+                    </div>
+                    <h3>Troca de Óleo</h3>
+                    <p>Troca de óleo e filtros com produtos de qualidade para manter o motor do seu veículo sempre protegido.</p>
+                </div>
+                <div class="servico-card">
+                    <div class="servico-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <h3>Geometria</h3>
+                    <p>Alinhamento e geometria precisos para garantir segurança, estabilidade e maior durabilidade dos pneus.</p>
+                </div>
+                <div class="servico-card">
+                    <div class="servico-icon">
+                        <i class="fas fa-circle-notch"></i>
+                    </div>
+                    <h3>Balanceamento</h3>
+                    <p>Balanceamento de rodas para eliminar vibrações e proporcionar mais conforto e segurança na direção.</p>
+                </div>
+                <div class="servico-card">
+                    <div class="servico-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Cambagem</h3>
+                    <p>Regulagem de cambagem para melhorar a performance, contato com o solo e desgaste uniforme dos pneus.</p>
+                </div>
+                <div class="servico-card">
+                    <div class="servico-icon">
+                        <i class="fas fa-wrench"></i>
+                    </div>
+                    <h3>Manutenção Geral</h3>
+                    <p>Revisão completa e manutenção preventiva e corretiva para manter seu veículo sempre em dia.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO SOBRE -->
+    <section id="sobre" class="sobre">
+        <div class="container">
+            <h2>Sobre a Olicar</h2>
+            <div class="sobre-content">
+                <div class="sobre-texto">
+                    <p><strong>Adicione sua informação pessoal/empresarial aqui</strong></p>
+                    <ul>
+                        <li>✓ Experiência comprovada</li>
+                        <li>✓ Melhor atendimento</li>
+                        <li>✓ Qualidade garantida</li>
+                        <li>✓ Preços competitivos</li>
+                    </ul>
+                </div>
+                <div class="sobre-info">
+                    <div class="info-card">
+                        <i class="fas fa-star"></i>
+                        <h3>Excelência</h3>
+                        <p>Compromisso com a qualidade</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-handshake"></i>
+                        <h3>Confiança</h3>
+                        <p>Relacionamento duradouro</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERIA -->
+    <section id="galeria" class="galeria">
+        <div class="container">
+            <h2>Galeria de Fotos</h2>
+            <div class="galeria-grid">
+                <div class="galeria-item">
+                    <img src="imagens/1.jpg" alt="Foto 1">
+                    <div class="galeria-overlay">
+                        <h3>Foto 1</h3>
+                    </div>
+                </div>
+                <div class="galeria-item">
+                    <img src="imagens/2.jpg" alt="Foto 2">
+                    <div class="galeria-overlay">
+                        <h3>Foto 2</h3>
+                    </div>
+                </div>
+                <div class="galeria-item">
+                    <img src="imagens/3.jpg" alt="Foto 3">
+                    <div class="galeria-overlay">
+                        <h3>Foto 3</h3>
+                    </div>
+                </div>
+                <div class="galeria-item">
+                    <img src="imagens/4.jpg" alt="Foto 4">
+                    <div class="galeria-overlay">
+                        <h3>Foto 4</h3>
+                    </div>
+                </div>
+                <div class="galeria-item">
+                    <img src="imagens/5.jpg" alt="Foto 5">
+                    <div class="galeria-overlay">
+                        <h3>Foto 5</h3>
+                    </div>
+                </div>
+                <div class="galeria-item">
+                    <img src="imagens/6.jpg" alt="Foto 6">
+                    <div class="galeria-overlay">
+                        <h3>Foto 6</h3>
+                    </div>
+                </div>
+                <div class="galeria-item">
+                    <img src="imagens/trabalho1.jpg" alt="Trabalho 1">
+                    <div class="galeria-overlay">
+                        <h3>Trabalho 1</h3>
+                    </div>
+                </div>
+                <div class="galeria-item">
+                    <img src="imagens/trabalho2.jpg" alt="Trabalho 2">
+                    <div class="galeria-overlay">
+                        <h3>Trabalho 2</h3>
+                    </div>
+                </div>
+                <div class="galeria-item">
+                    <img src="imagens/trabalho3.jpg" alt="Trabalho 3">
+                    <div class="galeria-overlay">
+                        <h3>Trabalho 3</h3>
+                    </div>
+                </div>
+                <div class="galeria-item">
+                    <img src="imagens/trabalho4.jpg" alt="Trabalho 4">
+                    <div class="galeria-overlay">
+                        <h3>Trabalho 4</h3>
+                    </div>
+                </div>
+                <div class="galeria-item">
+                    <img src="imagens/trabalho5.jpg" alt="Trabalho 5">
+                    <div class="galeria-overlay">
+                        <h3>Trabalho 5</h3>
+                    </div>
+                </div>
+                <div class="galeria-item">
+                    <img src="imagens/escritorio.jpg" alt="Escritorio">
+                    <div class="galeria-overlay">
+                        <h3>Escritorio</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AVALIAÇÕES -->
+    <section id="avaliacoes" class="avaliacoes">
+        <div class="container">
+            <h2>Avaliações com Foto e Vídeo</h2>
+            <div class="avaliacoes-content">
+                <form id="avaliacao-form" class="avaliacao-form" action="#" method="post" enctype="multipart/form-data">
+                    <label for="avaliacao-nome">Seu nome</label>
+                    <input type="text" id="avaliacao-nome" name="nome" placeholder="Ex.: João da Silva" required>
+
+                    <label for="avaliacao-nota">Nota</label>
+                    <select id="avaliacao-nota" name="nota" required>
+                        <option value="" disabled selected>Selecione uma nota</option>
+                        <option value="5">5 - Excelente</option>
+                        <option value="4">4 - Muito bom</option>
+                        <option value="3">3 - Bom</option>
+                        <option value="2">2 - Regular</option>
+                        <option value="1">1 - Precisa melhorar</option>
+                    </select>
+
+                    <label for="avaliacao-comentario">Comentário</label>
+                    <textarea id="avaliacao-comentario" name="comentario" rows="4" placeholder="Conte como foi sua experiência" required></textarea>
+
+                    <label for="avaliacao-foto">Foto da avaliação</label>
+                    <input type="file" id="avaliacao-foto" name="foto" accept="image/*">
+
+                    <label for="avaliacao-video">Vídeo da avaliação</label>
+                    <input type="file" id="avaliacao-video" name="video" accept="video/*">
+
+                    <button type="submit" class="avaliacao-btn">Enviar avaliação</button>
+                    <p id="avaliacao-status" class="avaliacao-status" aria-live="polite"></p>
+                </form>
+
+                <div class="midia-preview">
+                    <div class="preview-card">
+                        <h3>Prévia da foto</h3>
+                        <img id="preview-foto" alt="Prévia da foto enviada" class="preview-hidden">
+                        <p id="preview-foto-placeholder">Nenhuma foto selecionada.</p>
+                    </div>
+                    <div class="preview-card">
+                        <h3>Prévia do vídeo</h3>
+                        <video id="preview-video" controls class="preview-hidden"></video>
+                        <p id="preview-video-placeholder">Nenhum vídeo selecionado.</p>
+                    </div>
+                    <p class="avaliacao-aviso">As avaliações enviadas aparecem abaixo e ficam salvas na nuvem.</p>
+                </div>
+            </div>
+
+            <div class="avaliacoes-publicadas">
+                <h3>Quem já avaliou</h3>
+                <div id="avaliacoes-lista" class="avaliacoes-lista"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO DE CONTATO -->
+    <section id="contato" class="contato">
+        <div class="container">
+            <h2>Conecte-se Conosco</h2>
+            <div class="contato-content">
+                <div class="contato-info">
+                    <h3>Informações de Contato</h3>
+                    <div class="info-item">
+                        <i class="fas fa-phone-volume" aria-hidden="true"></i>
+                        <div>
+                            <strong>Telefone:</strong>
+                            <p><a href="tel:+5547997867018">(47) 99786-7018</a></p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope-open-text" aria-hidden="true"></i>
+                        <div>
+                            <strong>Email:</strong>
+                            <p><a href="https://outlook.live.com/mail/0/deeplink/compose?to=olicarautomecanica@hotmail.com" target="_blank" rel="noopener noreferrer">olicarautomecanica@hotmail.com</a></p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-location-dot" aria-hidden="true"></i>
+                        <div>
+                            <strong>Endereço:</strong>
+                            <p><a href="https://www.google.com/maps/dir/?api=1&destination=Manoel+Estevao+Couto+354%2C+Navegantes%2C+SC%2C+Brazil%2C+88370555" target="_blank" rel="noopener noreferrer">Manoel Estêvão Couto 354, Navegantes, SC, Brazil, 88370555</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="redes-sociais">
+                    <h3>Redes Sociais</h3>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/olicar_automecanica/" target="_blank" class="social-btn instagram">
+                            <i class="fab fa-instagram"></i> Instagram
+                        </a>
+                        <a href="https://www.facebook.com/share/18Vb3DuuFG/" target="_blank" class="social-btn facebook">
+                            <i class="fab fa-facebook"></i> Facebook
+                        </a>
+                        <a href="https://wa.me/5547997867018?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Olicar%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" class="social-btn whatsapp">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
+                        </a>
+                        <a href="tel:+5547997867018" class="social-btn telefone" aria-label="Ligar para (47) 99786-7018" title="Ligar agora">
+                            <i class="fas fa-phone"></i> Telefonar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>OLICAR</h4>
+                    <p>Seu parceiro de confiança</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#galeria">Galeria</a></li>
+                        <li><a href="#avaliacoes">Avaliações</a></li>
+                        <li><a href="#sobre">Sobre</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Criador do Site</h4>
+                    <p>Este site foi criado por Xispimtec, com foco em presença digital profissional.</p>
+                    <a
+                        href="https://xispimtec.com.br"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="creator-link"
+                        aria-label="Acessar o site da Xispimtec"
+                    >
+                        Visitar xispimtec.com.br
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 OLICAR. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a
+        href="https://wa.me/5547997867018?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Olicar%20e%20gostaria%20de%20um%20or%C3%A7amento."
+        class="whatsapp-float"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Conversar no WhatsApp"
+        title="Fale com a Olicar no WhatsApp"
+    >
+        <i class="fab fa-whatsapp" aria-hidden="true"></i>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
